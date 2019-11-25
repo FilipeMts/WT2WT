@@ -2,6 +2,7 @@
 
 const tmdb = require('themoviedb-api-client')(process.env.TMDB_API_KEY);
 const Mtv = require("./../models/mtv");
+const List = require("./../models/list");
 
 const {
     Router
@@ -21,16 +22,18 @@ tmdbRouter.get('/search', (req, res, next) => {
         });
 });
 
-tmdbRouter.post('/create/:id', (req, res, next) => {
+const mtvExists = require("../middleware/mtvExists");
+
+tmdbRouter.post('/create/:id', mtvExists, (req, res, next) => {
     tmdb.movieInfo(req.params)
-        .then((movieObject) => {
+        .then(movieObject => {
             const {
                 id,
                 title,
                 media_type,
                 imdb_id
             } = movieObject.body;
-            console.log(id);
+
             return Mtv.create({
                 tmdb_id: id,
                 title,
@@ -40,8 +43,14 @@ tmdbRouter.post('/create/:id', (req, res, next) => {
             });
         }).then(mtv => {
             console.log(mtv);
-        })
-        .catch((error) => {
+            List.create({
+                type: 'watching',
+                user_id: req.session.user,
+                $push: {
+                    mtvs: mtv
+                }
+            });
+        }).catch((error) => {
             console.log(error);
         });
 });

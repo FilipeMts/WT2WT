@@ -20,6 +20,7 @@ const User = require('./models/user');
 const Suggestion = require('./models/suggestion');
 const Mtv = require('./models/mtv');
 const Approve = require('./models/approve');
+const List = require('./models/list');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');

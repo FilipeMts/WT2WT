@@ -1,5 +1,6 @@
 'use strict';
 
+const findOrCreate = require('mongoose-findorcreate');
 const mongoose = require('mongoose');
 
 const mtvSchema = new mongoose.Schema({
@@ -33,6 +34,11 @@ const mtvSchema = new mongoose.Schema({
     timestamps: true
 });
 
+mtvSchema.plugin(findOrCreate);
 const Mtv = mongoose.model('Mtv', mtvSchema);
+
+mtvSchema.methods.confirmExistence = function (callback) {
+
+};
 
 module.exports = Mtv;
