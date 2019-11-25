@@ -14,7 +14,8 @@ const suggestionSchema = new mongoose.Schema({
         required: true
     },
     fromUsers: {
-        type: [userSchema],
+        type: [mongoose.Types.ObjectId],
+        ref: 'User',
         required: true
     },
     count: {
