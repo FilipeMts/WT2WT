@@ -1,0 +1,8 @@
+<ul>
+    {{#each searchObject.body.results }}
+    <li>{{ title }}</li>
+    <form action="/create/{{ id }}" method="POST">
+        <button>Add</button>
+    </form>
+    {{/each}}
+</ul>
