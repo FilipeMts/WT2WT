@@ -2,10 +2,11 @@
 
 const { Router } = require("express");
 const router = new Router();
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer')
 const User = require("./../models/user");
 const bcryptjs = require("bcryptjs");
 
+//S Set NODEMAILER
 const generateId = length => {
   const characters =
     "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -43,7 +44,7 @@ router.get("/success", (req, res, next) => {
   res.render("success");
   //console.log(req.user);
 });
-
+/*
 router.get("/confirm/:token", (req, res, next) => {
   const token = req.params.token;  
   User.findOneAndUpdate({confirmationCode: token}, 
@@ -59,7 +60,59 @@ router.get("/confirm/:token", (req, res, next) => {
       next(err)
     });
 });
+*/
 
+//SET PASSPORT
+const passport = require('passport');
+
+router.get('/sign-in', (req, res, next) => {
+  res.render('./auth/sign-in');
+});
+
+router.post(
+  '/sign-in',
+  passport.authenticate('sign-in', {
+    successRedirect: '/profile',
+    failureRedirect: '/sign-in'
+  })
+);
+
+router.get('/sign-up', (req, res, next) => {
+  res.render('./auth/sign-up');
+});
+
+router.post(
+  '/sign-up',
+  passport.authenticate('sign-up', {
+    successRedirect: '/',
+    failureRedirect: './auth/sign-up'
+  })
+);
+
+//GOOGLE SIGNUP/IN
+router.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile', "email"]}));
+
+router.get('/auth/google/redirect', 
+  passport.authenticate('google', { 
+    successRedirect: '/',
+    failureRedirect: './auth/sign-up' 
+  })
+);
+
+
+//FACEBOOK SIGNUP/IN
+router.get('/login/facebook',
+  passport.authenticate('facebook'));
+
+router.get('/auth/facebook/redirect', 
+  passport.authenticate('facebook', { 
+    successRedirect: '/',
+    failureRedirect: './auth/sign-up' 
+  })
+);
+
+// LOCAL SIGNUP
 router.get('/sign-up', (req, res, next) => {
   res.render('./auth/sign-up');
 });
@@ -78,15 +131,16 @@ router.post("/sign-up", (req, res, next) => {
       });
     })
     .then(user => {
-      sendMail(user);
+      //sendMail(user);
       req.session.user = user._id;
-      res.redirect('/confirmation');
+      res.redirect('/');
     })
     .catch(error => {
       next(error);
     });
 });
 
+// LOCAL SIGNIN
 router.get('/sign-in', (req, res, next) => {
   res.render('./auth/sign-in');
 });
@@ -108,7 +162,7 @@ router.post("/sign-in", (req, res, next) => {
     .then(result => {
       if (result) {
         req.session.user = userId;
-        res.redirect("/");
+        res.redirect("/profile");
       } 
       else {
         return Promise.reject(new Error("Wrong password."));
@@ -119,6 +173,8 @@ router.post("/sign-in", (req, res, next) => {
     });
 });
 
+
+// SIGNOUT
 router.post("/sign-out", (req, res, next) => {
   req.session.destroy();
   res.redirect("/");

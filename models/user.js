@@ -17,6 +17,13 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       trim: true
     },
+    googleId: {
+      type: String
+    },
+    googleToken: {
+      type: String,
+      trim: true,
+    },
     profilePic: {
       type: String,
       default: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.owensvalleyhistory.com%2Fat_the_movies22%2Fthemovies01.png&f=1&nofb=1'
