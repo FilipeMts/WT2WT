@@ -1,0 +1,9 @@
+{{#if user}}
+  <img src={{user.profilePic}} alt="profile pic" />
+  <p>{{user.username}}</p>
+  <p>{{user.status}}</p>
+  <a href="/">Edit profile</a>
+  </form>
+    {{else}}
+      <p>YOU HAVE TO REGISTER TO ACCESS THIS AREA</p>
+{{/if}}

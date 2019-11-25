@@ -1,0 +1,47 @@
+$font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$link-color: #00b7ff;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 50px;
+  font-family: $font-sans;
+}
+
+nav {      
+  width: 100%;
+  display: flex;
+  justify-content: space-between;  
+
+  .main {
+    width: 60%;
+    display: inherit;
+    justify-content:flex-start;
+
+    img {
+      width: 75px;
+    }
+
+    a {
+      padding-left: 1em;
+    }
+  }
+  
+  .options {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;   
+
+    a {
+      padding-right: 1em;
+    }
+  }
+}
+
+a {
+  color: $link-color;
+}

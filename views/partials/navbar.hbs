@@ -1,0 +1,24 @@
+<nav>
+  <div class="main">    
+    <p>LOGO</p>
+    <a href='/'><i class="fas fa-home"></i></a>
+    <a href='/'>Movies</a>
+    <a href='/'>TV Shows</a>
+    <a href='/'>XPTO</a>
+  </div>
+  <div class="options">
+    {{#if user}}
+      <a href="/profile">{{user.username}}'s Profile</a>
+      <form action="/sign-out" method="POST">
+        <button>Sign Out</button>
+      </form>
+    {{else}}
+      <a href='/sign-in'>Sign In</a>
+      <a href='/sign-up'>Sign Up</a>
+    {{/if}}
+    <form>      
+      <input id="input-search" name="seach" placeholder="search">
+      <button><i class="fas fa-search"></i></button>      
+    </form>
+  </div>
+</nav>
