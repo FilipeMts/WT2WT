@@ -1,6 +1,8 @@
 'use strict';
 
-const { join } = require('path');
+const {
+  join
+} = require('path');
 const express = require('express');
 const createError = require('http-errors');
 const cookieParser = require('cookie-parser');
@@ -13,11 +15,16 @@ const mongoose = require('mongoose');
 const expressSession = require('express-session');
 const connectMongo = require('connect-mongo');
 const MongoStore = connectMongo(expressSession);
+
 const User = require('./models/user');
+const Suggestion = require('./models/suggestion');
+const Mtv = require('./models/mtv');
+const Approve = require('./models/approve');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
 const authRouter = require('./routes/auth');
+const tmdbRouter = require('./routes/tmdb');
 
 const app = express();
 
@@ -26,7 +33,9 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + "/views/partials");
 
 app.use(logger('dev'));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(cookieParser());
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(sassMiddleware({
@@ -94,6 +103,7 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/', authRouter);
+app.use('/', tmdbRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

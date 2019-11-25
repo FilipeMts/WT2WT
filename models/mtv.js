@@ -29,7 +29,7 @@ const mtvSchema = new mongoose.Schema({
     approveCount: {
         type: Number
     },
-    tmdbData: Schema.Types.Mixed
+    tmdbData: mongoose.Mixed
 }, {
     timestamps: true
 });
