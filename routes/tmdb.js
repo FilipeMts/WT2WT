@@ -42,14 +42,16 @@ tmdbRouter.post('/create/:id', mtvExists, (req, res, next) => {
                 tmdbData: movieObject.body
             });
         }).then(mtv => {
-            console.log(mtv);
-            List.create({
-                type: 'watching',
-                user_id: req.session.user,
+            return List.findOne({
+                user_id: req.session.passport.user,
+                type: 'watching'
+            }, {
                 $push: {
                     mtvs: mtv
                 }
             });
+        }).then(list => {
+            console.log(list);
         }).catch((error) => {
             console.log(error);
         });

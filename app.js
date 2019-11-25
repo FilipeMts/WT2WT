@@ -28,6 +28,7 @@ const authRouter = require('./routes/auth');
 const passportSetup = require('./passport-config')
 const tmdbRouter = require('./routes/tmdb');
 const mtvRouter = require('./routes/mtv');
+const listRouter = require('./routes/list');
 
 const app = express();
 
@@ -110,6 +111,7 @@ app.use('/user', usersRouter);
 app.use('/', authRouter);
 app.use('/', tmdbRouter);
 app.use('/', mtvRouter);
+app.use('/', listRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

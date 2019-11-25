@@ -2,6 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('./models/user');
+const List = require('./models/list');
 const bcryptjs = require('bcryptjs');
 
 const generateId = length => {
@@ -21,6 +22,7 @@ passport.serializeUser((user, callback) => {
 passport.deserializeUser((id, callback) => {
   User.findById(id)
     .then(user => {
+      console.log("Deserialize", user);
       callback(null, user);
     })
     .catch(error => {
@@ -30,8 +32,10 @@ passport.deserializeUser((id, callback) => {
 
 passport.use(
   'sign-up',
-  new LocalStrategy( { passReqToCallback: true },(req, username, password, callback) => {
-    const confirmToken = generateId(30);  
+  new LocalStrategy({
+    passReqToCallback: true
+  }, (req, username, password, callback) => {
+    const confirmToken = generateId(30);
     bcryptjs
       .hash(password, 10)
       .then(hash => {
@@ -43,6 +47,18 @@ passport.use(
         });
       })
       .then(user => {
+        List.create({
+          user_id: user._id,
+          type: 'watched'
+        });
+        List.create({
+          user_id: user._id,
+          type: 'watching'
+        });
+        List.create({
+          user_id: user._id,
+          type: 'to watch'
+        });
         callback(null, user);
       })
       .catch(error => {
@@ -53,11 +69,13 @@ passport.use(
 
 passport.use(
   'sign-in',
-  new LocalStrategy({ usernameField: 'email' }, (email, password, callback) => {
+  new LocalStrategy({
+    usernameField: 'email'
+  }, (email, password, callback) => {
     let user;
     User.findOne({
-      email
-    })
+        email
+      })
       .then(document => {
         user = document;
         return bcryptjs.compare(password, user.passwordHash);
@@ -80,45 +98,52 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 passport.use(
   new GoogleStrategy({
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "http://localhost:3000/auth/google/redirect"
-},
-function(accessToken, refreshToken, profile, callback) {
-  //console.log(profile._json.sub)
-  const {email, name, sub, picture} = profile._json
-  User.findOne({ googleId: profile._json.sub })
-  .then(user => {
-    if (user) {
-      return Promise.resolve(user);
-    } else {
-      return User.create({
-        email: email,
-        username: name,    
-        googleId: sub,
-        passwordHash: accessToken,
-        profilePic: picture          
-      });
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "http://localhost:3000/auth/google/redirect"
+    },
+    function (accessToken, refreshToken, profile, callback) {
+      //console.log(profile._json.sub)
+      const {
+        email,
+        name,
+        sub,
+        picture
+      } = profile._json
+      User.findOne({
+          googleId: profile._json.sub
+        })
+        .then(user => {
+          if (user) {
+            return Promise.resolve(user);
+          } else {
+            return User.create({
+              email: email,
+              username: name,
+              googleId: sub,
+              passwordHash: accessToken,
+              profilePic: picture
+            });
+          }
+        })
+        .then(user => {
+          callback(null, user);
+        })
+        .catch(error => {
+          callback(error);
+        });
     }
-  })
-  .then(user => {    
-    callback(null, user);
-  })
-  .catch(error => {
-    callback(error);
-  });
-}
-));
+  ));
 
 //FACEBOOK CONFIG
 const FacebookStrategy = require('passport-facebook').Strategy;
 
 passport.use(new FacebookStrategy({
-  clientID: process.env.FACEBOOK_APP_ID,
-  clientSecret: process.env.FACEBOOK_APP_SECRET,
-  callbackURL: "http://localhost:3000/auth/facebook/redirect"
-},
-function(accessToken, refreshToken, profile, cb) {
-  console.log(profile)
-}
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost:3000/auth/facebook/redirect"
+  },
+  function (accessToken, refreshToken, profile, cb) {
+    console.log(profile)
+  }
 ));
