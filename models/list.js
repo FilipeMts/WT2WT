@@ -15,8 +15,7 @@ const listSchema = new mongoose.Schema({
         required: true
     },
     mtvs: {
-        type: [mongoose.Types.ObjectId],
-        ref: 'Mtv',
+        type: [String],
         required: true
     }
 }, {

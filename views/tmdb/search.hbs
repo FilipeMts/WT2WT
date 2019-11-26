@@ -1,8 +1,11 @@
 <ul>
+    {{#if user}}
+    <p>{{ user }}</p>
+    {{/if }}
     {{#each searchObject.body.results }}
     <li>{{ title }}</li>
-    <form action="/create/{{ id }}" method="POST">
-        <button>Add</button>
+    <form action="{{../user.towatchList }}/add/{{ id }}" method="POST">
+        <button>Add to Watchlist</button>
     </form>
     {{/each}}
 </ul>
