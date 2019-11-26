@@ -15,11 +15,21 @@ const listSchema = new mongoose.Schema({
         required: true
     },
     mtvs: {
-        type: [String],
+        type: [mongoose.Types.ObjectId],
+        ref: 'Mtv',
         required: true
     }
 }, {
     timestamps: true
+});
+
+listSchema.method('findMtvOrPush', function (mtv_id) {
+    if (this.mtvs.includes(mtv_id)) {
+        console.log("Mtv is already on the list");
+    } else {
+        this.mtvs.push(mtv_id);
+        this.save();
+    }
 });
 
 const List = mongoose.model('List', listSchema);

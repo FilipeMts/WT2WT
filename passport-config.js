@@ -31,7 +31,7 @@ const sendMail = user => {
     html: `
       <p>Welcome to Wat2Watch</p>
       <p><a href="http://localhost:3000/confirm/${user.confirmationCode}">Please verify your email address by clicking this link in order to get full access to Wat2Watch</a></p>`
-    
+
     // html: `
     // <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.owensvalleyhistory.com%2Fat_the_movies22%2Fthemovies01.png&f=1&nofb=1" width="200px"/>
     // <p><a href="http://localhost:3000/confirm/${user.confirmationCode}">Please verify your email address by clicking this link</a></p>`
@@ -45,7 +45,7 @@ passport.serializeUser((user, callback) => {
 passport.deserializeUser((id, callback) => {
   User.findById(id)
     .then(user => {
-      //console.log("Deserialize", user);
+      console.log("Deserialize ===============================", user);
       callback(null, user);
     })
     .catch(error => {

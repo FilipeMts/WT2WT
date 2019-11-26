@@ -10,7 +10,7 @@ const {
 const tmdbRouter = new Router();
 
 tmdbRouter.get('/search', (req, res, next) => {
-    tmdb.searchMovie(req.query)
+    tmdb.searchMulti(req.query)
         .then((searchObject) => {
             res.render('tmdb/search', {
                 searchObject
