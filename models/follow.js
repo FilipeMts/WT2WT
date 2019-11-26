@@ -2,21 +2,21 @@
 
 const mongoose = require('mongoose');
 
-const approveSchema = new mongoose.Schema({
+const followSchema = new mongoose.Schema({
     user_id: {
         type: mongoose.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    mtv_id: {
-        type: mongoose.Types.ObjectId,
-        ref: 'Mtv',
+    users: {
+        type: [mongoose.Types.ObjectId],
+        ref: 'User',
         required: true
     }
 }, {
     timestamps: true
 });
 
-const Approve = mongoose.model('Approve', approveSchema);
+const Follow = mongoose.model('Follow', followSchema);
 
-module.exports = Approve;
+module.exports = Follow;
