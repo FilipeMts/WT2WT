@@ -85,7 +85,7 @@ app.use((req, res, next) => {
 
 
 app.use('/', indexRouter);
-app.use('/user', usersRouter);
+app.use('/', usersRouter);
 app.use('/', authRouter);
 app.use('/', tmdbRouter);
 app.use('/', mtvRouter);
