@@ -12,6 +12,20 @@ const routeGuard = require("../middleware/route-guard");
 
 listRouter.post('/:list_id/add/:media_type/:id', routeGuard, (req, res, next) => {
   let mtvObjectId;
+  /*
+  Mtv.findOne({
+    $and: [{
+      tmdb: req.params.id
+    }, {
+      media_type: req.params.media_type
+    }]
+  }).then(mtv => {
+    console.log("RETORNO-------------------------->", mtv);
+  });
+  */
+
+
+
   Mtv.findOrCreate(req.params)
     .then(mtvObject => {
       mtvObjectId = mtvObject._id;

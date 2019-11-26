@@ -1,15 +1,21 @@
 <ul>
+    {{!-- /*
     {{#if user}}
-    <p>{{ user }}</p>
+        <p>{{ user }}</p>
     {{/if }}
+    */ --}}
     {{#each searchObject.body.results }}
-    {{#if media_type }}
-    <li>{{#if title }}{{ title }}{{else}}{{ name }}{{/if}} <small>{{media_type}}</small></li>
-    {{#if ../user }}
-    <form action="{{../user.towatchList }}/add/{{ media_type }}/{{ id }}" method="POST">
-        <button>Add to Watchlist</button>
-    </form>
-    {{/if}}
-    {{/if}}
+        {{#if media_type }}
+            <li>
+                <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ poster_path }}" alt="">
+                {{#if title }}{{ title }}{{else}}{{ name }}{{/if}}
+                <small>{{media_type}}</small>
+            </li>
+            {{#if ../user }}
+                <form action="{{../user.towatchList }}/add/{{ media_type }}/{{ id }}" method="POST">
+                    <button>Add to Watchlist</button>
+                </form>
+            {{/if}}
+        {{/if}}
     {{/each}}
 </ul>
