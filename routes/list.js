@@ -5,26 +5,30 @@ const Mtv = require("./../models/mtv");
 const List = require("./../models/list");
 
 const {
-    Router
+  Router
 } = require('express');
 const listRouter = new Router();
+const routeGuard = require("../middleware/route-guard");
 
-const mtvExists = require("../middleware/mtvExists");
-
-listRouter.post(':list_id/add/:mtv_id', (req, res, next) => {
-    const {
-        list_id,
-        mtv_id
-    } = req.params;
-    List.findByIdAndUpdate(list_id, {
+listRouter.post('/:list_id/add/:id', routeGuard, (req, res, next) => {
+  Mtv.findOrCreate(req.params)
+    .then(mtvObject => {
+      console.log("mtvObject -------------> ", mtvObject);
+      return List.findByIdAndUpdate(req.params.list_id, {
         $push: {
-            mtvs: mtv_id
+          mtvs: mtvObject.id
         }
+      });
     }).then(list => {
-        console.log(list);
+      console.log(list);
+      res.redirect(`/${req.session.passport.user.username}/list/${list._id}`);
     }).catch((error) => {
-        console.log(error);
+      console.log(error);
     });
+});
+
+listRouter.get('/:username/list/:list_id', (req, res, next) => {
+  res.render('list/show', req.params);
 });
 
 module.exports = listRouter;

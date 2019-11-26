@@ -59,6 +59,7 @@ passport.use(
     passReqToCallback: true
   }, (req, username, password, callback) => {
     const confirmToken = generateId(30);
+    let userObject = {};
     bcryptjs
       .hash(password, 10)
       .then(hash => {
@@ -72,19 +73,27 @@ passport.use(
       .then(user => {
         console.log(user.email)
         sendMail(user)
-        List.create({
+        userObject = user;
+        return List.create({
           user_id: user._id,
           type: 'watched'
         });
-        List.create({
-          user_id: user._id,
+      }).then(listObject => {
+        userObject.watchedList = listObject._id;
+        return List.create({
+          user_id: userObject._id,
           type: 'watching'
         });
-        List.create({
-          user_id: user._id,
+      }).then(listObject => {
+        userObject.watchingList = listObject._id;
+        return List.create({
+          user_id: userObject._id,
           type: 'to watch'
         });
-        callback(null, user);
+      }).then(listObject => {
+        userObject.towatchList = listObject._id;
+        userObject.save();
+        callback(null, userObject);
       })
       .catch(error => {
         callback(error);
