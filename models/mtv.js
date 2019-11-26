@@ -1,16 +1,15 @@
 'use strict';
 
-//const findOrCreate = require('mongoose-findorcreate');
 const tmdb = require('themoviedb-api-client')(process.env.TMDB_API_KEY);
 const mongoose = require('mongoose');
 
 const mtvSchema = new mongoose.Schema({
-    tmdb_id: {
+    tmdb: {
         type: Number,
-        required: true,
-        unique: true
+        required: true
+        //unique: true
     },
-    imdb_id: {
+    imdb: {
         type: String,
         //required: true,
         unique: true,
@@ -23,7 +22,8 @@ const mtvSchema = new mongoose.Schema({
     },
     media_type: {
         type: String,
-        enum: ['movie', 'tv']
+        enum: ['movie', 'tv'],
+        trim: true
     },
     approveCount: {
         type: Number,
@@ -36,9 +36,12 @@ const mtvSchema = new mongoose.Schema({
 
 //mtvSchema.plugin(findOrCreate);
 mtvSchema.static('findOrCreate', function (idObject) {
-    return this.findOne({
-            tmbd_id: idObject.id,
-            media_type: idObject.media_type
+    return Mtv.findOne({
+            $and: [{
+                tmdb: idObject.id
+            }, {
+                media_type: idObject.media_type
+            }]
         })
         .then(mtv => {
             if (!mtv) {
@@ -51,11 +54,11 @@ mtvSchema.static('findOrCreate', function (idObject) {
                             title,
                             imdb_id
                         } = movieObject.body;
-                        return Mtv.create({
-                            tmdb_id: id,
+                        return this.create({
+                            tmdb: id,
                             title,
                             media_type: idObject.media_type,
-                            imdb_id,
+                            imdb: imdb_id,
                             tmdbData: movieObject.body
                         });
                     }).then(mtvObject => {

@@ -6,6 +6,11 @@ const {
 const mtvRouter = new Router();
 const Mtv = require("./../models/mtv");
 
+mtvRouter.get('/mtv/:media_type/:id', (req, res, next) => {
+    Mtv.findOrCreate(req.params).then(mtvObject => {
+        res.render('mtv/show', mtvObject);
+    });
+});
 
 
 module.exports = mtvRouter;
