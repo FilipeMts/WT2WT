@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-
+const nodemailer = require('nodemailer');
 const User = require('./models/user');
 const List = require('./models/list');
 const bcryptjs = require('bcryptjs');
@@ -15,6 +15,29 @@ const generateId = length => {
   return token;
 };
 
+let transporter = nodemailer.createTransport({
+  service: "Gmail",
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD
+  }
+});
+
+const sendMail = user => {
+  transporter.sendMail({
+    from: `wat2watch <MAIL>`,
+    to: `${user.email}`,
+    subject: "Email verification",
+    html: `
+      <p>Welcome to Wat2Watch</p>
+      <p><a href="http://localhost:3000/confirm/${user.confirmationCode}">Please verify your email address by clicking this link in order to get full access to Wat2Watch</a></p>`
+    
+    // html: `
+    // <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.owensvalleyhistory.com%2Fat_the_movies22%2Fthemovies01.png&f=1&nofb=1" width="200px"/>
+    // <p><a href="http://localhost:3000/confirm/${user.confirmationCode}">Please verify your email address by clicking this link</a></p>`
+  });
+}
+
 passport.serializeUser((user, callback) => {
   callback(null, user._id);
 });
@@ -22,7 +45,7 @@ passport.serializeUser((user, callback) => {
 passport.deserializeUser((id, callback) => {
   User.findById(id)
     .then(user => {
-      console.log("Deserialize", user);
+      //console.log("Deserialize", user);
       callback(null, user);
     })
     .catch(error => {
@@ -47,6 +70,8 @@ passport.use(
         });
       })
       .then(user => {
+        console.log(user.email)
+        sendMail(user)
         List.create({
           user_id: user._id,
           type: 'watched'

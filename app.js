@@ -25,7 +25,7 @@ const List = require('./models/list');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
 const authRouter = require('./routes/auth');
-const passportSetup = require('./passport-config')
+//const passportSetup = require('./passport-config')
 const tmdbRouter = require('./routes/tmdb');
 const mtvRouter = require('./routes/mtv');
 const listRouter = require('./routes/list');
@@ -50,6 +50,7 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(join(__dirname, 'public')));
 
+// Express-Session
 app.use(
   expressSession({
     secret: process.env.SESSION_SECRET,
@@ -67,32 +68,9 @@ app.use(
     })
   })
 );
-/*
-// Deserializing user
-// Checks if there's a user ID saved on the session
-// If so, load the user from the database and bind it into req.user
-app.use((req, res, next) => {
-  const userId = req.session.user;
-  if (userId) {
-    User.findById(userId)
-      .then(user => {
-        req.user = user;
-        // Set the user in the response locals, so it can be accessed from any view
-        res.locals.user = req.user;
-        // Go to the next middleware/controller
-        next();
-      })
-      .catch(error => {
-        next(error);
-      });
-  } else {
-    // If there isn't a userId saved in the session,
-    // go to the next middleware/controller
-    next();
-  }
-});
-*/
 
+
+// Passport
 require('./passport-config');
 
 const passport = require('passport');
