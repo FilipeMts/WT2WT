@@ -1,2 +1,15 @@
 <h1>User Profile</h1>
+{{userObj}}
+
+
+{{#if follow}}
+<form action="/user/{{userObj.username}}/unfollow" method="post">
+<button>UNFOLLOW</button>
+</form>
+{{else}}
+<form action="/user/{{userObj.username}}/follow" method="post">
+<button>FOLLOW</button>
+</form>
+{{/if}}
+
 

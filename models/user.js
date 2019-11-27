@@ -44,10 +44,14 @@ const userSchema = new mongoose.Schema({
     type: String
   },
   followingCount: {
-    type: Number
+    type: Number,
+    default: 0,
+    min: 0
   },
   followersCount: {
-    type: Number
+    type: Number,
+    default: 0,
+    min: 0
   },
   watchingList: {
     type: mongoose.Types.ObjectId,
@@ -65,16 +69,81 @@ const userSchema = new mongoose.Schema({
   timestamps: true
 });
 
+
+userSchema.static('oneMoreFollower', function (id) {
+  return User.findById(id)
+    .then(user => {
+      if (!user) {
+        return Promise.reject("There's no user with that id");
+      } else {
+        user.followersCount++;
+        return user.save();
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
+userSchema.static('oneMoreFollow', function (id) {
+  return User.findById(id)
+    .then(user => {
+      if (!user) {
+        return Promise.reject("There's no user with that id");
+      } else {
+        user.followingCount++;
+        return user.save();
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
+userSchema.static('oneLessFollower', function (id) {
+  return User.findById(id)
+    .then(user => {
+      if (!user) {
+        return Promise.reject("There's no user with that id");
+      } else {
+        user.followersCount--;
+        return user.save();
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
+userSchema.static('oneLessFollow', function (id) {
+  return User.findById(id)
+    .then(user => {
+      if (!user) {
+        return Promise.reject("There's no user with that id");
+      } else {
+        user.followingCount--;
+        return user.save();
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
+userSchema.static('findByUsername', function (username) {
+  return User.findOne(username)
+    .then(user => {
+      if (!user) {
+        return Promise.reject("There's no user with that username");
+      } else {
+        return user;
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
 const User = mongoose.model('User', userSchema);
-
-userSchema.methods.addToFollowerCount = function (cb) {
-  this.followersCount++;
-  this.save();
-};
-
-userSchema.methods.addToFollowingCount = function (cb) {
-  this.followingCount++;
-  this.save();
-};
 
 module.exports = User;

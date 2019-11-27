@@ -3,6 +3,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const nodemailer = require('nodemailer');
 const User = require('./models/user');
 const List = require('./models/list');
+const Follow = require('./models/follow');
 const bcryptjs = require('bcryptjs');
 
 const generateId = length => {
@@ -45,7 +46,9 @@ passport.serializeUser((user, callback) => {
 passport.deserializeUser((id, callback) => {
   User.findById(id)
     .then(user => {
-      console.log("Deserialize ===============================", user);
+      // console.log("================ DESERIALIZE ====================");
+      // console.log(user);
+      // console.log("================ END DESERIALIZE ====================");
       callback(null, user);
     })
     .catch(error => {
@@ -93,6 +96,10 @@ passport.use(
       }).then(listObject => {
         userObject.towatchList = listObject._id;
         userObject.save();
+        return Follow.create({
+          user_id: userObject._id,
+        });
+      }).then(followObject => {
         callback(null, userObject);
       })
       .catch(error => {
