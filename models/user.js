@@ -67,4 +67,14 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+userSchema.methods.addToFollowerCount = function (cb) {
+  this.followersCount++;
+  this.save();
+};
+
+userSchema.methods.addToFollowingCount = function (cb) {
+  this.followingCount++;
+  this.save();
+};
+
 module.exports = User;
