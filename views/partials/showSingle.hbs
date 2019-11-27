@@ -8,6 +8,9 @@
     <p class="text-center">{{tmdbData.release_date}}</p>
     {{!-- <p class="text-center">{{ media_type }}</p> --}}  
     <p>{{ approveCount }}</p>
+    <form action="/disapprove/{{ media_type }}/{{ tmdb }}" method="post">
+      <button>Disapprove!</button>
+    </form>
     <p class="text-justify">{{tmdbData.overview}}</p>
   </div>
 </div>
