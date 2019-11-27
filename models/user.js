@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const Follow = require("./../models/follow");
+// const Follow = require("./../models/follow");
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -72,6 +72,7 @@ const userSchema = new mongoose.Schema({
 
 
 userSchema.static('oneMoreFollower', function (id) {
+  const User = this;
   return User.findById(id)
     .then(user => {
       if (!user) {
@@ -87,6 +88,7 @@ userSchema.static('oneMoreFollower', function (id) {
 });
 
 userSchema.static('oneMoreFollow', function (id) {
+  const User = this;
   return User.findById(id)
     .then(user => {
       if (!user) {
@@ -102,6 +104,7 @@ userSchema.static('oneMoreFollow', function (id) {
 });
 
 userSchema.static('oneLessFollower', function (id) {
+  const User = this;
   return User.findById(id)
     .then(user => {
       if (!user) {
@@ -117,6 +120,7 @@ userSchema.static('oneLessFollower', function (id) {
 });
 
 userSchema.static('oneLessFollow', function (id) {
+  const User = this;
   return User.findById(id)
     .then(user => {
       if (!user) {
@@ -132,6 +136,7 @@ userSchema.static('oneLessFollow', function (id) {
 });
 
 userSchema.static('findByUsername', function (username) {
+  const User = this;
   return User.findOne(username)
     .then(user => {
       if (!user) {
@@ -146,9 +151,11 @@ userSchema.static('findByUsername', function (username) {
 });
 
 userSchema.static('findFollowers', function (id) {
+  const User = this;
+  const Follow = mongoose.model('Follow');
   return Follow.find({
       users: id
-    },{
+    }, {
       user_id: 1
     })
     .then(user => {
