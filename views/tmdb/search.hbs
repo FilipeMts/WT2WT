@@ -15,6 +15,9 @@
                 <form action="{{../user.towatchList }}/add/{{ media_type }}/{{ id }}" method="POST">
                     <button>Add to Watchlist</button>
                 </form>
+                <form action="/approve/{{ media_type }}/{{ id }}" method="POST">
+                    <button>Approve</button>
+                </form>
             {{/if}}
         {{/if}}
     {{/each}}
