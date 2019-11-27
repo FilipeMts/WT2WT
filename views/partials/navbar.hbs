@@ -1,24 +1,26 @@
-<nav class="d-flex align-items-center">
-  <div class="main">
-    <p>LOGO</p>
+<nav class="navbar d-flex align-items-center p-3 fixed-top">
+  <div class="d-flex align-items-center">
     <a href='/'><i class="fas fa-home"></i></a>
     <a href='/'>Movies</a>
     <a href='/'>TV Shows</a>
     <a href='/'>XPTO</a>
   </div>
-  <div class="options">
-    {{#if user}}
-    <a href="/profile">{{user.username}}'s Profile</a>
-    <form action="/sign-out" method="POST">
-      <button>Sign Out</button>
-    </form>
-    {{else}}
-    <a href='/sign-in'>Sign In</a>
-    <a href='/sign-up'>Sign Up</a>
-    {{/if}}
+  <div id="navbar-search" class="">
     <form method="GET" action="/search">
       <input id="input-search" name="query" placeholder="search">
-      <button><i class="fas fa-search"></i></button>
+      {{!-- <button><i class="fas fa-search"></i></button> --}}
     </form>
+  </div>
+  <div id="navbar-user">
+    {{#if user}}
+      <a href="/profile">{{user.username}}'s Profile</a>
+      <form action="/sign-out" method="POST">
+        <button>Sign Out</button>
+      </form>
+    {{else}}
+      <a href='/sign-in'>Sign In</a>
+      <a href='/sign-up'>Sign Up</a>
+    {{/if}}
+    
   </div>
 </nav>
