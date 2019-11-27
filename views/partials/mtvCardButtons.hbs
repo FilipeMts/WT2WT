@@ -1,14 +1,14 @@
-<div class="btn-group d-flex justify-content-around">
-  <form action="{{../user.towatchList }}/add/{{ media_type }}/{{ id }}" method="POST">
+<div class="btn-group d-flex justify-content-center">
+  <form class="pl-2 pr-2"action="{{../user.watchedList }}/add/{{ media_type }}/{{ id }}" method="POST">
       <button title="watched"><i class="fas fa-check"></i></button>
   </form>
-  <form action="{{../user.towatchList }}/add/{{ media_type }}/{{ id }}" method="POST">
+  <form class="pl-2 pr-2"action="{{../user.watchingList }}/add/{{ media_type }}/{{ id }}" method="POST">
       <button title="watching"><i class="far fa-eye"></i></button>
   </form>
-  <form action="{{../user.towatchList }}/add/{{ media_type }}/{{ id }}" method="POST">
+  <form class="pl-2 pr-2"action="{{../user.towatchList }}/add/{{ media_type }}/{{ id }}" method="POST">
       <button title="to be watched"><i class="far fa-clock"></i></button>
   </form>
-  <form action="/approve/{{ media_type }}/{{ id }}" method="POST">
+  <form class="pl-2 pr-2"action="/approve/{{ media_type }}/{{ id }}" method="POST">
       <button title="approve"><i class="far fa-thumbs-up"></i></button>
   </form>
 </div>

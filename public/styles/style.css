@@ -34,6 +34,12 @@ nav {
     nav .options a {
       padding-right: 1em; }
 
+.caption {
+  color: red;
+  position: absolute;
+  top: 8px;
+  left: 20px; }
+
 a {
   color: #00b7ff; }
 

@@ -1,8 +1,15 @@
 <div class="rounded shadow">
   <a href="/mtv/{{ media_type }}/{{ id }}">
-  <img class="rounded w-100" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ poster_path }}" alt="">
-  {{!-- {{#if title }}{{ title }}{{else}}{{ name }}{{/if}}
-  <small>{{media_type}}</small> --}}
+  <img class="rounded w-100 poster" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ poster_path }}" alt="">
+    {{#ifEquals media_type "tv"}}
+      </div>
+        <i class="fas fa-tv caption"></i>
+      <div>
+    {{/ifEquals}}
+    {{#ifEquals media_type "movie"}}
+      </div>
+        <i class="fas fa-film caption"></i>
+      <div>
+    {{/ifEquals}}
   </a>
-</div><a href="/mtv/{{ media_type }}/{{ id }}">
-
+</div>

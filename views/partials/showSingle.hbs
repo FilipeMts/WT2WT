@@ -1,6 +1,9 @@
-<div class="m-5 d-flex flex-column justify-content-center">
-  <img class="mx-auto" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ tmdbData.poster_path }}">
-  <div>
+<div class="mt-5 d-flex flex-column justify-content-center">
+  <div class="d-flex justify-content-center banner">    
+    <img class="mx-auto rounded shadow" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ tmdbData.poster_path }}">
+  </div>
+  {{> mtvCardButtons}}
+  <div class="px-5 rounded bg-primary">
     <h1 class="text-center">{{ title }}</h1>
     <p class="text-center">{{tmdbData.release_date}}</p>
     {{!-- <p class="text-center">{{ media_type }}</p> --}}  

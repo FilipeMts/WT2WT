@@ -38,6 +38,14 @@ app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + "/views/partials");
 
+hbs.registerHelper('ifEquals', function(a, b, opts) {
+  if (a == b) {
+      return opts.fn(this);
+  } else {
+      return opts.inverse(this);
+  }
+});
+
 app.use(logger('dev'));
 app.use(express.urlencoded({
   extended: true
