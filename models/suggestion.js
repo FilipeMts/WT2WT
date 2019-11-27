@@ -29,6 +29,7 @@ const suggestionSchema = new mongoose.Schema({
 });
 
 suggestionSchema.static('findOrCreate', function (mtv, user, approver) {
+    const Suggestion = this;
     return Suggestion.findOne({
             $and: [{
                 mtv_id: mtv

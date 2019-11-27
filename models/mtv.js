@@ -30,6 +30,7 @@ const mtvSchema = new mongoose.Schema({
 });
 
 mtvSchema.static('isMovieOrTv', function (tmdb_id, media_type) {
+    const Mtv = this;
     if (media_type === 'movie') {
         return tmdb.movieInfo({
             id: tmdb_id
@@ -37,11 +38,12 @@ mtvSchema.static('isMovieOrTv', function (tmdb_id, media_type) {
     } else if (media_type === 'tv') {
         return tmdb.tvInfo({
             id: tmdb_id
-        })
-    }
+        });
+    };
 });
 
 mtvSchema.static('oneMoreApprove', function (id) {
+    const Mtv = this;
     return Mtv.findById(id)
         .then(mtv => {
             if (!mtv) {
@@ -57,6 +59,7 @@ mtvSchema.static('oneMoreApprove', function (id) {
 });
 
 mtvSchema.static('oneLessApprove', function (id) {
+    const Mtv = this;
     return Mtv.findById(id)
         .then(mtv => {
             if (!mtv) {
@@ -72,6 +75,7 @@ mtvSchema.static('oneLessApprove', function (id) {
 });
 
 mtvSchema.static('findOrCreate', function (idObject) {
+    const Mtv = this;
     return Mtv.findOne({
             $and: [{
                 tmdb: idObject.id
