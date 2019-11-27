@@ -2,6 +2,12 @@
   <img src={{user.profilePic}} alt="profile pic" />
   <p>{{user.username}}</p>
   <p>{{user.status}}</p>
+  <ul>
+    <li><a href="/{{user.username}}/list/{{ user.watchedList }}">Watched List</a></li>
+    <li><a href="/{{user.username}}/list/{{ user.watchingList }}">Watching List</a></li>
+    <li><a href="/{{user.username}}/list/{{ user.towatchList }}">To Watch List</a></li>
+  </ul>
+  
   <a href="/">Edit profile</a>
   </form>
     {{else}}

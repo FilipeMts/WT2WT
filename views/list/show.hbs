@@ -1,1 +1,4 @@
-{{ list }}
+{{list}}
+{{#each list.mtvs }}
+  <a href="/mtv/{{ media_type }}/{{ tmdb }}">{{ title }}</a>
+{{/each }}
