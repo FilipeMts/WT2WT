@@ -9,12 +9,6 @@ const mtvSchema = new mongoose.Schema({
         required: true
         //unique: true
     },
-    imdb: {
-        type: String,
-        //required: true,
-        unique: true,
-        trim: true
-    },
     title: {
         type: String,
         required: true,
@@ -29,12 +23,54 @@ const mtvSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    tmdbData: mongoose.Mixed
+    tmdbData: mongoose.Mixed,
+    social_ids: mongoose.Mixed
 }, {
     timestamps: true
 });
 
-//mtvSchema.plugin(findOrCreate);
+mtvSchema.static('isMovieOrTv', function (tmdb_id, media_type) {
+    if (media_type === 'movie') {
+        return tmdb.movieInfo({
+            id: tmdb_id
+        });
+    } else if (media_type === 'tv') {
+        return tmdb.tvInfo({
+            id: tmdb_id
+        })
+    }
+});
+
+mtvSchema.static('oneMoreApprove', function (id) {
+    return Mtv.findById(id)
+        .then(mtv => {
+            if (!mtv) {
+                return Promise.reject("There's no mtv with that id");
+            } else {
+                mtv.approveCount++;
+                return mtv.save();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+});
+
+mtvSchema.static('oneLessApprove', function (id) {
+    return Mtv.findById(id)
+        .then(mtv => {
+            if (!mtv) {
+                return Promise.reject("There's no mtv with that id");
+            } else {
+                mtv.approveCount--;
+                return mtv.save();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+});
+
 mtvSchema.static('findOrCreate', function (idObject) {
     return Mtv.findOne({
             $and: [{
@@ -46,20 +82,18 @@ mtvSchema.static('findOrCreate', function (idObject) {
         .then(mtv => {
             if (!mtv) {
                 // If no mtv was found, return a rejection with an error to the error handler at the end
-                return tmdb.movieInfo({
-                        id: idObject.id
-                    }).then(movieObject => {
+                return Mtv.isMovieOrTv(idObject.id, idObject.media_type)
+                    .then(tmdbObject => {
                         const {
                             id,
                             title,
-                            imdb_id
-                        } = movieObject.body;
+                            name
+                        } = tmdbObject.body;
                         return this.create({
                             tmdb: id,
-                            title,
+                            title: idObject.media_type === 'movie' ? title : name,
                             media_type: idObject.media_type,
-                            imdb: imdb_id,
-                            tmdbData: movieObject.body
+                            tmdbData: tmdbObject.body
                         });
                     }).then(mtvObject => {
                         return mtvObject;

@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const Follow = require("./../models/follow");
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -132,6 +133,24 @@ userSchema.static('oneLessFollow', function (id) {
 
 userSchema.static('findByUsername', function (username) {
   return User.findOne(username)
+    .then(user => {
+      if (!user) {
+        return Promise.reject("There's no user with that username");
+      } else {
+        return user;
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
+userSchema.static('findFollowers', function (id) {
+  return Follow.find({
+      users: id
+    },{
+      user_id: 1
+    })
     .then(user => {
       if (!user) {
         return Promise.reject("There's no user with that username");

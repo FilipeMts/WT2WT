@@ -1,6 +1,8 @@
 'use strict'
 
-const { Router } = require("express");
+const {
+  Router
+} = require("express");
 const router = new Router();
 
 const User = require("./../models/user");
@@ -12,10 +14,11 @@ router.get("/success", (req, res, next) => {
 });
 
 router.get("/confirm/:token", (req, res, next) => {
-  const token = req.params.token;  
-  User.findOneAndUpdate({confirmationCode: token}, 
-    { 
-      status: "Active" 
+  const token = req.params.token;
+  User.findOneAndUpdate({
+      confirmationCode: token
+    }, {
+      status: "Active"
     })
     .then(user => {
       //console.log(user)
@@ -57,12 +60,14 @@ router.post(
 
 //GOOGLE SIGNUP/IN
 router.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile', "email"]}));
+  passport.authenticate('google', {
+    scope: ['profile', "email"]
+  }));
 
-router.get('/auth/google/redirect', 
-  passport.authenticate('google', { 
+router.get('/auth/google/redirect',
+  passport.authenticate('google', {
     successRedirect: '/',
-    failureRedirect: './auth/sign-up' 
+    failureRedirect: './auth/sign-up'
   })
 );
 
@@ -71,10 +76,10 @@ router.get('/auth/google/redirect',
 router.get('/login/facebook',
   passport.authenticate('facebook'));
 
-router.get('/auth/facebook/redirect', 
-  passport.authenticate('facebook', { 
+router.get('/auth/facebook/redirect',
+  passport.authenticate('facebook', {
     successRedirect: '/',
-    failureRedirect: './auth/sign-up' 
+    failureRedirect: './auth/sign-up'
   })
 );
 
@@ -87,8 +92,8 @@ router.post("/sign-out", (req, res, next) => {
 const routeGuard = require("../middleware/route-guard");
 
 router.get("/profile", routeGuard, (req, res, next) => {
-  console.log(req.params)
-  res.render("profile");
+  //console.log(req.params)
+  res.redirect(`/user/${req.user.username}`);
 });
 
 module.exports = router;
