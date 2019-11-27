@@ -7,9 +7,11 @@
     {{#each searchObject.body.results }}
         {{#if media_type }}
             <li>
+                <a href="/mtv/{{ media_type }}/{{ id }}">
                 <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ poster_path }}" alt="">
                 {{#if title }}{{ title }}{{else}}{{ name }}{{/if}}
                 <small>{{media_type}}</small>
+                </a>
             </li>
             {{#if ../user }}
                 <form action="{{../user.towatchList }}/add/{{ media_type }}/{{ id }}" method="POST">
