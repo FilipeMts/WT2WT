@@ -4,24 +4,15 @@
   </div>
 </div>
 <div class="container bg-white">
-<ul>
+<ul class="row list-unstyled ">
     {{#each searchObject.body.results }}
         {{#if media_type }}
-            <li>
-                <a href="/mtv/{{ media_type }}/{{ id }}">
-                <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ poster_path }}" alt="">
-                {{#if title }}{{ title }}{{else}}{{ name }}{{/if}}
-                <small>{{media_type}}</small>
-                </a>
-            </li>
-            {{#if ../user }}
-                <form action="{{../user.towatchList }}/add/{{ media_type }}/{{ id }}" method="POST">
-                    <button>Add to Watchlist</button>
-                </form>
-                <form action="/approve/{{ media_type }}/{{ id }}" method="POST">
-                    <button>Approve</button>
-                </form>
+            <li class="col-6 col-sm-4 col-md-3 mt-5">
+                {{> mtvCard}}
+                {{#if ../user }}
+                {{> mtvCardButtons}}
             {{/if}}
+            </li>
         {{/if}}
     {{/each}}
 </ul>

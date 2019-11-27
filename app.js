@@ -30,6 +30,7 @@ const tmdbRouter = require('./routes/tmdb');
 const mtvRouter = require('./routes/mtv');
 const listRouter = require('./routes/list');
 const approveRouter = require('./routes/approve');
+const followRouter = require('./routes/follow');
 
 const app = express();
 
@@ -59,7 +60,7 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 60 * 60 * 24 * 15,
-      sameSite: true,
+      sameSite: "lax",
       httpOnly: true,
       secure: process.env.NODE_ENV !== 'development'
     },
@@ -92,6 +93,7 @@ app.use('/', tmdbRouter);
 app.use('/', mtvRouter);
 app.use('/', listRouter);
 app.use('/', approveRouter);
+app.use('/', followRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
