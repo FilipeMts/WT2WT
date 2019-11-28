@@ -10,7 +10,7 @@ $link-color: #00b7ff;
 
 body {
   padding: 0px;
-  margin-top: 50px;
+  margin-top: 56px;
   font-family: $font-sans;
 }
 
@@ -65,12 +65,12 @@ a {
 }
 
 .mtvCards {
-  top: -10%;
+  top: -21px;
   width: 80%;
   align-self: center;
 }
 
-.poster {
+/* .poster {
   animation-duration: 3s;
   animation-name: fadeIn;             
 
@@ -107,4 +107,4 @@ a {
             margin-top: 0;                    
         }                
     }
-}
+} */

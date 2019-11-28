@@ -6,17 +6,25 @@
   <div class="px-5 rounded bg-primary">
     <h1 class="text-center">{{ title }}</h1>
     <p class="text-center font-italic">{{tmdbData.tagline}}</p>
+    <p class="text-center">
+      {{#each tmdbData.genres}}      
+        {{ this.name }}      
+      {{/each}} 
+    </p>
     <p class="text-center">{{tmdbData.release_date}}</p>
     <p><span>Approved by: </span>{{ approveCount }} <span>friends</span></p>
     <form action="/disapprove/{{ media_type }}/{{ tmdb }}" method="post">
       <button>Disapprove!</button>
     </form>
     <p class="text-justify">{{ tmdbData.overview }}</p>
-        {{#ifEquals media_type "movie"}}
+
+    {{#ifEquals media_type "movie"}}
       <div>
         <p class="text-justify">Status: {{ tmdbData.status }}</p>
-      </div>    
+      </div>   
+
     {{/ifEquals}}
+
     {{#ifEquals media_type "tv"}}
       <div>
         <p><span>First air date:</span> {{ tmdbData.first_air_date}}</p>

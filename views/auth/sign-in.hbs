@@ -1,20 +1,28 @@
-<div class="mt-5">
+<div class="d-flex align-items-center" style="height:90vh"> 
   <form action='./sign-in' method='POST' class="col-3 py-3 mx-auto border-2 shadow">
+    <h6 class="text-center">Login</h6>
     <div class="form-group">
       <input id='input-email' type="email" name="email" class="form-control" placeholder="Enter email" required autofocus/>    
-      <small class="text-center">Email</small>
+      <small class="text-center text-muted">Email</small> {{!-- LABEL --}}
     </div>
     <div class="form-group">
       <input id="input-password" type="password" name="password" class="form-control" placeholder="Enter your password" required/>
-      <small class="text-center">Password</small>
+      <small class="text-center text-muted">Password</small> {{!-- LABEL --}}
     </div>
-    <button type="submit" class="btn btn-primary text-center">Submit</button>
-    <div class="text-center mt-3">
-      <a href="/auth/google"><i class="fab fa-google" style="color: red"></i>  Sign In with Google</a>
+    <button type="submit" class="btn btn-primary text-center w-100">Submit</button>
+    <div class="text-center mt-3 w-100">
+      <a href="/auth/google" class="border round p-2"><i class="fab fa-google" style="color: red"></i>  Sign In with Google</a>
     </div>
   </form>
 </div>
-
+{{!-- 
+// sign-in height: 90vh
+dflex item-center
+título logi in
+botão 100%~
+small : text-muted
+sing in google border round p2
+backgroud-gradient --}}
 
 {{!-- <div class="mt-5">
   <form action='./sign-in' method='POST'>
