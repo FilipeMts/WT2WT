@@ -5,7 +5,7 @@
 
 body {
   padding: 0px;
-  margin-top: 50px;
+  margin-top: 56px;
   font-family: "Karla", sans-serif; }
 
 h1,
@@ -16,24 +16,70 @@ h5,
 h6 {
   font-family: "Rubik", sans-serif; }
 
-nav {
-  width: 100%;
-  display: flex;
-  justify-content: space-between; }
-  nav .main {
-    width: 60%;
-    display: inherit;
-    justify-content: flex-start; }
-    nav .main img {
-      width: 75px; }
-    nav .main a {
-      padding-left: 1em; }
-  nav .options {
-    width: 40%;
-    display: flex;
-    justify-content: space-between; }
-    nav .options a {
-      padding-right: 1em; }
+.bg-1 {
+  background-color: #f67280; }
+
+.bg-2 {
+  background-color: #c06c84; }
+
+.bg-3 {
+  background-color: #6c5b7b; }
+
+.bg-4 {
+  background-color: #355c7d; }
+
+.color-1 {
+  color: #f67280; }
+
+.color-2 {
+  color: #c06c84; }
+
+.color-3 {
+  color: #6c5b7b; }
+
+.color-4 {
+  color: #355c7d; }
+
+.text-arial {
+  font-family: Arial, Helvetica, sans-serif; }
+
+.text-1 {
+  font-size: 1em; }
+
+.text-1-5 {
+  font-size: 1.5em; }
+
+.text-2 {
+  font-size: 2em; }
+
+.text-3 {
+  font-size: 3em; }
+
+.lh-0 {
+  line-height: 0; }
+
+#navbar {
+  background-color: #355c7d; }
+  #navbar a {
+    color: #efefef; }
+  #navbar #navbar-links img {
+    height: 25px; }
+  #navbar #navbar-user img {
+    width: 40px; }
+  #navbar #navbar-search input {
+    background-color: #ffffff20;
+    color: #ffffff; }
+    #navbar #navbar-search input::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: white;
+      opacity: 1;
+      /* Firefox */ }
+    #navbar #navbar-search input:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: white; }
+    #navbar #navbar-search input::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: white; }
 
 .caption {
   color: red;

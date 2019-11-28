@@ -1,6 +1,12 @@
 $font-headings: 'Rubik', sans-serif;
 $font-sans: 'Karla', sans-serif;
 $link-color: #00b7ff;
+$color1: #f67280;
+$color2: #c06c84;
+$color3: #6c5b7b;
+$color4: #355c7d;
+
+$lightgrey: #efefef;
 
 * {
   margin: 0;
@@ -10,7 +16,7 @@ $link-color: #00b7ff;
 
 body {
   padding: 0px;
-  margin-top: 50px;
+  margin-top: 56px;
   font-family: $font-sans;
 }
 
@@ -23,32 +29,89 @@ h6 {
   font-family: $font-headings;
 }
 
-nav {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+.bg-1 {
+  background-color: $color1;
+}
+.bg-2 {
+  background-color: $color2;
+}
+.bg-3 {
+  background-color: $color3;
+}
+.bg-4 {
+  background-color: $color4;
+}
 
-  .main {
-    width: 60%;
-    display: inherit;
-    justify-content: flex-start;
+.color-1 {
+  color: $color1;
+}
+.color-2 {
+  color: $color2;
+}
+.color-3 {
+  color: $color3;
+}
+.color-4 {
+  color: $color4;
+}
 
-    img {
-      width: 75px;
-    }
+.text-arial {
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    a {
-      padding-left: 1em;
-    }
+.text-1 {
+  font-size: 1em;
+}
+
+.text-1-5 {
+  font-size: 1.5em;
+}
+
+.text-2 {
+  font-size: 2em;
+}
+
+.text-3 {
+  font-size: 3em;
+}
+
+.lh-0 {
+  line-height: 0;
+}
+
+#navbar {
+  background-color: $color4;
+
+  a {
+    color: $lightgrey;
   }
 
-  .options {
-    width: 40%;
-    display: flex;
-    justify-content: space-between;
+  #navbar-links img {
+    height: 25px;
+  }
 
-    a {
-      padding-right: 1em;
+  #navbar-user img {
+    width: 40px;
+  }
+
+  #navbar-search input {
+    background-color: #ffffff20;
+    color: #ffffff;
+
+    &::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: white;
+      opacity: 1; /* Firefox */
+    }
+
+    &:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: white;
+    }
+
+    &::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: white;
     }
   }
 }
@@ -72,39 +135,47 @@ a {
 
 .poster {
   animation-duration: 3s;
-  animation-name: fadeIn;             
+  animation-name: fadeIn;
 
   @-webkit-keyframes fadeIn {
-      0% {opacity: 0;};
-      100% {opacity: 1;};
-   } 
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
   @keyframes fadeIn {
-      0% {opacity: 0;};
-      100% {opacity: 1;};
-   } 
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
 
 .posterBanner {
   animation-duration: 3s;
   animation-name: slideIn;
-  z-index: 100; 
-      
-    @-webkit-keyframes slideIn {
-        from {
-            margin-top: -200%;                    
-        }
-        to {
-            margin-top: 0;                    
-        }                
-    }
+  z-index: 100;
 
-    @keyframes slideIn {
-        from {
-            margin-top: -200%;                    
-        }
-        to {
-            margin-top: 0;                    
-        }                
+  @-webkit-keyframes slideIn {
+    from {
+      margin-top: -200%;
     }
+    to {
+      margin-top: 0;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      margin-top: -200%;
+    }
+    to {
+      margin-top: 0;
+    }
+  }
 }
