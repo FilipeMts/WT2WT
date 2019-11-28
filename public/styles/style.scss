@@ -158,7 +158,7 @@ a {
 }
 
 .registerSignIn {
-  height: 90vh;
+  height: calc(100vh - 56px);
   background: rgb(246,114,128);
   background: linear-gradient(0deg, rgba(246,114,128,1) 19%, rgba(53,92,125,1) 100%);
 }
