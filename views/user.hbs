@@ -55,115 +55,19 @@
       </div>
     </div>
   </div>
-  <div>
 
-{{!-- 
-
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Approved</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Watched</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Want to watch</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Currently watched</a>
   </div>
-
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 </div>
 
-
-
-  <div class="px-5 rounded w-100 userInfo">
-    <h1 class="text-center pt-5">{{userObj.username}}</h1>
-    <p class="text-center font-italic">mood</p>
-    <div class ="col-md-12 col-sm-12 text-center">
-      {{#if follow}}
-        <form action="/user/{{userObj.username}}/unfollow" method="post">
-        <button type="button" class="btn-gradient p-2 rouded-twice">UNFOLLOW</button>
-        </form>
-      {{else}}
-        <form action="/user/{{userObj.username}}/follow" method="post">
-        <button type="button" class="btn-gradient p-2 rouded-twice">FOLLOW</button>
-        </form>
-      {{/if}}
-    </div>
-
-      <div class="mt-5">
-    <div class="row text-center">
-      <div class ="col-md-6 col-sm-6">
-        <p class="text-center">Following:{{userObj.followingCount}}</p>
-      </div>
-
-      <div class ="col-md-6 col-sm-6 text-center">
-        <p>{{userObj.followersCount}} followers</p>
-      </div>
-    </div>
-  </div>
-
-  <ul>
-    {{#each userObj.watchedList}}
-      <li>{{this}}</li>
-    {{/each}}
-  </ul>
-  <ul>
-    {{#each userObj.towatchList}}
-      <li>{{this}}</li>
-    {{/each}}
-  </ul>
-  <ul>
-    {{#each userObj.watchingList}}
-      <li>{{this}}</li>
-    {{/each}}
-  </ul>
-  </div>
-
-
-</div>
- --}}
-
-{{!-- 
-<div class ="container-fluid">
-  <div class ="row">
-    <div class ="col-md-6 col-sm-6 text-center">
-        <img class="mx-auto rounded-top shadow posterBanner w-50" src={{userObj.profilePic}}>
-    </div>
-    <div class ="col-md-6 col-sm-6 flex-column justify-content-center align-items-center">
-        <p class="text-center">{{userObj.username}}</p> 
-        <p class="text-center font-italic">mood</p>
-        <div class ="col-md-12 col-sm-12 text-center">
-          {{#if follow}}
-            <form action="/user/{{userObj.username}}/unfollow" method="post">
-            <button>UNFOLLOW</button>
-            </form>
-          {{else}}
-            <form action="/user/{{userObj.username}}/follow" method="post">
-            <button>FOLLOW</button>
-            </form>
-          {{/if}}
-      </div>
-     </div>
-  </div>
-
-  <div class="mt-5">
-    <div class="row text-center">
-    <div class ="col-md-6 col-sm-6">
-      <p class="text-center">Following:{{userObj.followingCount}}</p>
-    </div>
-
-    <div class ="col-md-6 col-sm-6 text-center">
-      <p>Followers:{{userObj.followersCount}}</p>
-    </div>
-  </div>
-</div>
-
-  <ul>
-    {{#each userObj.watchedList}}
-      <li>{{this}}</li>
-    {{/each}}
-  </ul>
-  <ul>
-    {{#each userObj.towatchList}}
-      <li>{{this}}</li>
-    {{/each}}
-  </ul>
-  <ul>
-    {{#each userObj.watchingList}}
-      <li>{{this}}</li>
-    {{/each}}
-  </ul>
-
-
-</div>
- --}}
+<div>
