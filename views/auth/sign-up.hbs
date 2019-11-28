@@ -1,12 +1,32 @@
-<form action="/sign-up" method="POST">
+<form action="/sign-up" method="POST" class="col-6 py-3 mx-auto border-2 shadow">
+  <div class="form-group">
+    <input id="input-username" type="text" class="form-control" name="username" placeholder="Your username" required autofocus/> 
+    <small>Username</small>
+  </div>
+  <div class="form-group">
+    <input id='input-email' type="email" class="form-control" name="email" placeholder="Enter email" required/>    
+    <small class="text-center">Email</small>
+  </div>
+  <div class="form-group">
+    <input id="input-password" type="password" class="form-control" name="password" placeholder="Enter your password" required/>
+    <small class="text-center">Password</small>
+  </div>
+  <button class="btn btn-primary">Sign Up</button>
+  <div class="text-center">
+    <a href="/auth/google"><i class="fab fa-google" style="color: red"></i>  Sign Up with Google</a>
+  </div>
+</form>
+
+{{!-- <form action="/sign-up" method="POST">
   <label for="input-username">Username</label>
-  <input type="text" id="input-username" name="username" {{!-- placeholder="Your username" --}} />
+  <input type="text" id="input-username" name="username" placeholder="Your username" />
   <label for="input-email">Email</label>
-  <input type="email" id="input-email" name="email" {{!-- placeholder="Your Email" --}} />
+  <input type="email" id="input-email" name="email" placeholder="Your Email" />
   <label for="input-password">Password</label>
-  <input type="password" name="password" id="input-password" {{!-- placeholder="A Strong Password" --}} required/>
+  <input type="password" name="password" id="input-password" placeholder="A Strong Password"required/>
   <button>Sign Up</button>
 </form>
 
 <a href='/login/facebook'>Sign up with Facebook</a>
-<a href="/auth/google">Sign up with Google</a>
+<a href="/auth/google">Sign up with Google</a>  --}}
+

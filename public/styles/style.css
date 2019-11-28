@@ -5,6 +5,7 @@
 
 body {
   padding: 0px;
+  margin-top: 50px;
   font-family: "Karla", sans-serif; }
 
 h1,
@@ -42,5 +43,38 @@ nav {
 
 a {
   color: #00b7ff; }
+
+.poster {
+  animation-duration: 5s;
+  animation-name: fadeIn; }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.posterBanner {
+  animation-duration: 3s;
+  animation-name: slideIn;
+  z-index: 100; }
+
+@-webkit-keyframes slideIn {
+  from {
+    margin-top: -200%; }
+  to {
+    margin-top: 0; } }
+
+@keyframes slideIn {
+  from {
+    margin-top: -200%; }
+  to {
+    margin-top: 0; } }
 
 /*# sourceMappingURL=style.css.map */

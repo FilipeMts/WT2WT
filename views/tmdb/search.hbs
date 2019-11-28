@@ -4,10 +4,10 @@
   </div>
 </div>
 <div class="container bg-white">
-<ul class="row list-unstyled">
+<ul class="row list-unstyled poster">
     {{#each searchObject.body.results }}
         {{#if media_type }}
-            <li class="col-6 col-sm-4 col-md-3 mt-5">
+            <li class="col-6 col-sm-4 col-md-3 mt-2">
                 {{> mtvCard}}
                 {{#if ../user }}
                   {{> mtvCardButtons}}

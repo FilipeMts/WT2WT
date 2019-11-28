@@ -1,13 +1,31 @@
 <div class="mt-5">
+  <form action='./sign-in' method='POST' class="col-6 py-3 mx-auto border-2 shadow">
+    <div class="form-group">
+      <input id='input-email' type="email" name="email" class="form-control" placeholder="Enter email" required autofocus/>    
+      <small class="text-center">Email</small>
+    </div>
+    <div class="form-group">
+      <input id="input-password" type="password" name="password" class="form-control" placeholder="Enter your password" required/>
+      <small class="text-center">Password</small>
+    </div>
+    <button type="submit" class="btn btn-primary text-center">Submit</button>
+    <div class="text-center">
+      <a href="/auth/google"><i class="fab fa-google" style="color: red"></i>  Sign In with Google</a>
+    </div>
+  </form>
+</div>
+
+
+{{!-- <div class="mt-5">
   <form action='./sign-in' method='POST'>
     <label for='input-email'>Email</label>
-    <input id='input-email' type='text' name='email' {{!-- placeholder="your email" --}} required/>
+    <input id='input-email' type='text' name='email'  placeholder="your email"  required/>
     <label for='input-password'>Password</label>
-    <input id='input-password' type='password' name='password' {{!-- placeholder="your password" --}} required/>
+    <input id='input-password' type='password' name='password' placeholder="your password"  required/>
     <button>Sign In</button>
   </form>
   <a href=''>Forgot password?</a>
 
   <a href=''>Sign in with Facebook</a>
   <a href="/auth/google">Sign In with Google</a>
-</div>
+</div> --}}

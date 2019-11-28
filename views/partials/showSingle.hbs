@@ -1,17 +1,30 @@
-<div class="mt-5 d-flex flex-column justify-content-center align-items-center">
-  <div class="d-flex justify-content-center banner flex-column">    
-    
-    <img class="mx-auto rounded-top shadow" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ tmdbData.poster_path }}">
+<div class="mt-5 d-flex flex-column justify-content-center align-items-center banner" style="background-image: url('https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ tmdbData.backdrop_path }}'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+  <div class="d-flex justify-content-center flex-column" >
+    <img class="mx-auto rounded-top shadow posterBanner" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ tmdbData.poster_path }}"> 
     {{> mtvCardButtons}}
   </div>
   <div class="px-5 rounded bg-primary">
     <h1 class="text-center">{{ title }}</h1>
+    <p class="text-center font-italic">{{tmdbData.tagline}}</p>
     <p class="text-center">{{tmdbData.release_date}}</p>
-    {{!-- <p class="text-center">{{ media_type }}</p> --}}  
-    <p>{{ approveCount }}</p>
+    <p><span>Approved by: </span>{{ approveCount }} <span>friends</span></p>
     <form action="/disapprove/{{ media_type }}/{{ tmdb }}" method="post">
       <button>Disapprove!</button>
     </form>
-    <p class="text-justify">{{tmdbData.overview}}</p>
+    <p class="text-justify">{{ tmdbData.overview }}</p>
+        {{#ifEquals media_type "movie"}}
+      <div>
+        <p class="text-justify">Status: {{ tmdbData.status }}</p>
+      </div>    
+    {{/ifEquals}}
+    {{#ifEquals media_type "tv"}}
+      <div>
+        <p><span>First air date:</span> {{ tmdbData.first_air_date}}</p>
+        <p><span>Last air date:</span> {{ tmdbData.last_air_date}}</p>
+        <p><span>Seasons:</span> {{ tmdbData.number_of_seasons}}</p>
+        <p><span>Episodes:</span> {{ tmdbData.number_of_episodes}}</p>
+        <p class="text-justify">Status: {{ tmdbData.status }}</p>
+      </div>    
+    {{/ifEquals}}
   </div>
 </div>
