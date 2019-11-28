@@ -73,6 +73,8 @@ h6 {
     height: 25px; }
   #navbar #navbar-user img {
     width: 40px; }
+  #navbar #navbar-user a {
+    height: 40px; }
   #navbar #navbar-search input {
     background-color: #ffffff20;
     color: #ffffff; }
@@ -137,6 +139,7 @@ a {
 
 .user-lists {
   border-left: 2px solid #f67280; }
+
 .text-highlighted {
   font-weight: 900;
   padding: 3px 8px; }

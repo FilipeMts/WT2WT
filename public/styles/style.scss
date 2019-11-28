@@ -99,8 +99,13 @@ h6 {
     height: 25px;
   }
 
-  #navbar-user img {
-    width: 40px;
+  #navbar-user {
+    img {
+      width: 40px;
+    }
+    a {
+      height: 40px;
+    }
   }
 
   #navbar-search input {
@@ -198,10 +203,11 @@ a {
 
 .user-lists {
   border-left: 2px solid $color1;
+}
+
 .text-highlighted {
   font-weight: 900;
   padding: 3px 8px;
-}
 }
 
 /* .poster {
