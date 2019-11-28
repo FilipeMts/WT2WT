@@ -29,6 +29,9 @@ h6 {
 .bg-4 {
   background-color: #355c7d; }
 
+.bg-wheat {
+  background-color: wheat; }
+
 .rounded-twice {
   border-radius: 0.5rem !important; }
 
@@ -85,6 +88,12 @@ h6 {
       /* Microsoft Edge */
       color: white; }
 
+.btn-gradient {
+  background: linear-gradient(45deg, #f67280 0%, #c06c84 80%);
+  color: white;
+  font-weight: 900;
+  border: none; }
+
 .poster li div a p.title {
   bottom: 0;
   font-family: "Rubik", sans-serif;
@@ -118,6 +127,10 @@ a {
 
 .main-info {
   background: whitesmoke; }
+
+.text-highlighted {
+  font-weight: 900;
+  padding: 3px 8px; }
 
 /* .poster {
   animation-duration: 3s;

@@ -43,6 +43,10 @@ h6 {
   background-color: $color4;
 }
 
+.bg-wheat {
+  background-color: wheat;
+}
+
 .rounded-twice {
   border-radius: 0.5rem !important;
 }
@@ -121,6 +125,13 @@ h6 {
   }
 }
 
+.btn-gradient {
+  background: linear-gradient(45deg, $color1 0%, $color2 80%);
+  color: white;
+  font-weight: 900;
+  border: none;
+}
+
 .poster {
   li {
     div {
@@ -174,6 +185,11 @@ a {
 
 .main-info {
   background: whitesmoke;
+}
+
+.text-highlighted {
+  font-weight: 900;
+  padding: 3px 8px;
 }
 
 /* .poster {
