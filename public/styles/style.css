@@ -119,6 +119,16 @@ a {
 .main-info {
   background: whitesmoke; }
 
+.userInfo {
+  background: #355c7d; }
+
+.userProfileImg {
+  border-radius: 50%;
+  border: 2px solid #f67280; }
+
+.user-lists {
+  border-left: 2px solid #f67280; }
+
 /* .poster {
   animation-duration: 3s;
   animation-name: fadeIn;

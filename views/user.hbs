@@ -1,20 +1,75 @@
 {{!-- {{userObj}} --}}
 
-<div class="mt-5 d-flex flex-column justify-content-center align-items-center banner">
-  <div class="d-flex justify-content-center flex-column" >
-    <img class="mx-auto rounded-top shadow posterBanner w-50" src="{{userObj.profilePic}}"> 
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-6 text-center">
+        <img class="mx-auto shadow userProfileImg" src="https://lh3.googleusercontent.com/-XbkzMFWVLE0/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3re6kkquCia1vbFpbzQieoGplRr2rw.CMID/s192-c/photo.jpg"> 
+    </div>
+    <div class="col-6">
+      <h1 class="text-center"><span>@</span>{{userObj.username}}</h1>
+      <p class="text-center font-italic">Say hello to my little friend!</p> 
+      {{!-- <p class="text-center">Following:{{userObj.followingCount}}</p> --}}
+      <p class="text-center">{{userObj.followersCount}} followers</p>   
+      {{#if follow}}
+        <form action="/user/{{userObj.username}}/unfollow" method="post" class="text-center">
+        <button type="button" class="btn-gradient p-2 rounded-twice">Unfollw</button>
+        </form>
+      {{else}}
+        <form action="/user/{{userObj.username}}/follow" method="post" class="text-center">
+        <button type="button" class="btn-gradient p-2 rounded-twice">Follow</button>
+        </form>
+      {{/if}}  
+    </div>
+  </div>  
+  <div class="mt-5 bg-color-pink">
+    <div class="row text-center">
+      <div class ="col-md-4 col-sm-4">
+        <h6>Alredy watched</h6>
+        <ul class="list-unstyled user-lists">
+          {{#each userObj.watchedList}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class ="col-md-4 col-sm-4">
+        <h6>Want to watch</h6>
+        <ul class="list-unstyled user-lists">
+          {{#each userObj.towatchList}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class ="col-md-4 col-sm-4 text-center">
+        <h6>Currently watching</h6>
+        <ul class="list-unstyled user-lists">
+          {{#each userObj.watchingList}}
+            <li>{{this}}</li>
+          {{/each}}
+       </ul>
+      </div>
+    </div>
   </div>
-  <div class="px-5 rounded bg-primary w-100">
-    <h1 class="text-center">{{userObj.username}}</h1>
+  <div>
+
+{{!-- 
+
+  </div>
+
+</div>
+
+
+
+  <div class="px-5 rounded w-100 userInfo">
+    <h1 class="text-center pt-5">{{userObj.username}}</h1>
     <p class="text-center font-italic">mood</p>
     <div class ="col-md-12 col-sm-12 text-center">
       {{#if follow}}
         <form action="/user/{{userObj.username}}/unfollow" method="post">
-        <button>UNFOLLOW</button>
+        <button type="button" class="btn-gradient p-2 rouded-twice">UNFOLLOW</button>
         </form>
       {{else}}
         <form action="/user/{{userObj.username}}/follow" method="post">
-        <button>FOLLOW</button>
+        <button type="button" class="btn-gradient p-2 rouded-twice">FOLLOW</button>
         </form>
       {{/if}}
     </div>
@@ -26,7 +81,7 @@
       </div>
 
       <div class ="col-md-6 col-sm-6 text-center">
-        <p>Followers:{{userObj.followersCount}}</p>
+        <p>{{userObj.followersCount}} followers</p>
       </div>
     </div>
   </div>
@@ -50,7 +105,7 @@
 
 
 </div>
-
+ --}}
 
 {{!-- 
 <div class ="container-fluid">

@@ -1,17 +1,17 @@
-<div class="mt-5 d-flex flex-column justify-content-center align-items-center banner" style="background-image: url('https://image.tmdb.org/t/p/w1400_and_h450_face/{{ tmdbData.backdrop_path }}'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+<div class="d-flex flex-column justify-content-center align-items-center banner" style="background-image: url('https://image.tmdb.org/t/p/w1400_and_h450_face/{{ tmdbData.backdrop_path }}'); background-repeat: no-repeat; background-size: cover; background-position: center;">
   <div class="d-flex justify-content-center flex-column" >
     <img class="mx-auto rounded-top shadow posterBanner" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ tmdbData.poster_path }}"> 
     {{> mtvCardButtons}}
   </div>
   <div class="px-5 rounded w-100 main-info">
-    <h1 class="font-weight-bold text-center pt-5">{{ title }}</h1>
+    <h1 class="font-weight-bold text-center pt-3">{{ title }}</h1>
     {{#ifEquals media_type "tv"}}
       {{#ifEquals tmdbData.status "Returning Series"}}
         <p class="text-center" style="color: green">{{ tmdbData.status }}</p> 
       {{/ifEquals}}
     {{/ifEquals}}
     <p class="text-center font-italic">{{tmdbData.tagline}}</p>
-    <p class="text-center"><span><i class="far fa-thumbs-up"></i></span> {{ approveCount }}</p>
+    <p class="text-center"><span><i class="lni-thumbs-up"></i></span> {{ approveCount }}</p>
     <p class="text-center">
       {{#each tmdbData.genres}}      
         {{ this.name }}      
