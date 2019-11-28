@@ -64,8 +64,14 @@ a {
   color: $link-color;
 }
 
+.mtvCards {
+  top: -10%;
+  width: 80%;
+  align-self: center;
+}
+
 .poster {
-  animation-duration: 5s;
+  animation-duration: 3s;
   animation-name: fadeIn;             
 
   @-webkit-keyframes fadeIn {
