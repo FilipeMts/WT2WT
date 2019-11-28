@@ -28,6 +28,9 @@ h6 {
 .bg-4 {
   background-color: #355c7d; }
 
+.rounded-twice {
+  border-radius: 0.5rem !important; }
+
 .color-1 {
   color: #f67280; }
 
@@ -81,56 +84,69 @@ h6 {
       /* Microsoft Edge */
       color: white; }
 
+.poster li div a p.title {
+  bottom: 0;
+  font-family: "Rubik", sans-serif;
+  margin-bottom: 25px !important; }
+
 .caption {
-  color: red;
   position: absolute;
-  top: 8px;
-  left: 20px; }
+  top: 0;
+  left: 16px;
+  color: #ffffff70; }
 
 a {
   color: #00b7ff; }
 
-.mtvCards {
+.mtvButtons {
   top: -21px;
   width: 80%;
-  align-self: center; }
+  align-self: center;
+  background-color: #ffffffe7; }
+  .mtvButtons button {
+    background-color: transparent;
+    border: none; }
 
 /* .poster {
   animation-duration: 3s;
-  animation-name: fadeIn;             
+  animation-name: fadeIn;
 
   @-webkit-keyframes fadeIn {
-      0% {opacity: 0;};
-      100% {opacity: 1;};
-   } 
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
   @keyframes fadeIn {
-      0% {opacity: 0;};
-      100% {opacity: 1;};
-   } 
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
 
 .posterBanner {
   animation-duration: 3s;
   animation-name: slideIn;
-  z-index: 100; 
-      
-    @-webkit-keyframes slideIn {
-        from {
-            margin-top: -200%;                    
-        }
-        to {
-            margin-top: 0;                    
-        }                
-    }
+  z-index: 100;
 
-    @keyframes slideIn {
-        from {
-            margin-top: -200%;                    
-        }
-        to {
-            margin-top: 0;                    
-        }                
+  @-webkit-keyframes slideIn {
+    from {
+      margin-top: -200%;
+    }
+    to {
+      margin-top: 0;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      margin-top: -200%;
     }
 } */
 

@@ -42,6 +42,10 @@ h6 {
   background-color: $color4;
 }
 
+.rounded-twice {
+  border-radius: 0.5rem !important;
+}
+
 .color-1 {
   color: $color1;
 }
@@ -116,21 +120,41 @@ h6 {
   }
 }
 
+.poster {
+  li {
+    div {
+      a {
+        p.title {
+          bottom: 0;
+          font-family: $font-headings;
+          margin-bottom: 25px !important;
+        }
+      }
+    }
+  }
+}
+
 .caption {
-  color: red;
   position: absolute;
-  top: 8px;
-  left: 20px;
+  top: 0;
+  left: 16px;
+  color: #ffffff70;
 }
 
 a {
   color: $link-color;
 }
 
-.mtvCards {
+.mtvButtons {
   top: -21px;
   width: 80%;
   align-self: center;
+  background-color: #ffffffe7;
+
+  button {
+    background-color: transparent;
+    border: none;
+  }
 }
 
 /* .poster {

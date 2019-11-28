@@ -1,6 +1,11 @@
-<div class="rounded shadow">
+<div class="shadow rounded-twice position-relative">
   <a href="/mtv/{{ media_type }}/{{ id }}">
-  <img class="rounded w-100 " src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ poster_path }}" alt="" title="{{ title }}">
+  {{#if poster_path}}
+    <img class="rounded-twice w-100 " src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ poster_path }}" alt="" title="{{ title }}">
+  {{else}}
+    <img class="rounded-twice w-100 " src="/images/defaultPoster.svg" alt="" title="{{ title }}">
+    <p class="w-100 position-absolute text-center title mb-0 color-4">{{#ifEquals media_type "tv"}}{{ name }}{{/ifEquals}}{{#ifEquals media_type "movie"}}{{ title }}{{/ifEquals}}</p>
+  {{/if}}
     {{#ifEquals media_type "tv"}}
       </div>
         <i class="fas fa-tv caption"></i>
@@ -8,7 +13,7 @@
     {{/ifEquals}}
     {{#ifEquals media_type "movie"}}
       </div>
-        <i class="fas fa-film caption"></i>
+        <i class="fas fa-film caption p-1 rounded"></i>
       <div>
     {{/ifEquals}}
   </a>

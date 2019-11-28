@@ -3,20 +3,19 @@
     <h1 class="mb-0 text-1-5 text-uppercase">Search<span class="color-4 text-1-5 ml-1 lh-0">.</span></h1>
   </div>
 </div>
-<div class="container bg-white">
-<ul class="row list-unstyled poster">
-    {{#each searchObject.body.results }}
-        {{#if media_type }}
-            <li class="col-6 col-sm-4 col-md-3 mt-2">
-                {{> mtvCard}}
-                {{#if ../user }}
-                  {{> mtvCardButtons}}
-                {{/if}}
-            </li>
-        {{/if}}
-    {{/each}}
-</ul>
-
+<div class="container bg-white p-5">
+  <ul class="row list-unstyled poster">
+      {{#each searchObject.body.results }}
+          {{#if media_type }}
+              <li class="col-6 col-sm-4 col-md-3 my-2">
+                  {{> mtvCard}}
+                  {{#if ../user }}
+                    {{> mtvCardButtons}}
+                  {{/if}}
+              </li>
+          {{/if}}
+      {{/each}}
+  </ul>
 </div>
 
 
