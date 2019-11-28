@@ -88,6 +88,17 @@ h6 {
       /* Microsoft Edge */
       color: white; }
 
+.background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 90vh;
+  z-index: -99;
+  filter: blur(4px); }
+
 .btn-gradient {
   background: linear-gradient(45deg, #f67280 0%, #c06c84 80%);
   color: white;
@@ -112,7 +123,8 @@ a {
   top: -21px;
   width: 80%;
   align-self: center;
-  background-color: #ffffffe7; }
+  background-color: #ffffffe7;
+  z-index: 500; }
   .mtvButtons button {
     background-color: transparent;
     border: none; }
@@ -137,53 +149,40 @@ a {
 
 .user-lists {
   border-left: 2px solid #f67280; }
+
 .text-highlighted {
   font-weight: 900;
   padding: 3px 8px; }
 
-/* .poster {
+.banner-poster {
   animation-duration: 3s;
-  animation-name: fadeIn;
+  animation-name: fadeIn; }
 
-  @-webkit-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-}
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 
 .posterBanner {
   animation-duration: 3s;
   animation-name: slideIn;
-  z-index: 100;
+  z-index: 100; }
 
-  @-webkit-keyframes slideIn {
-    from {
-      margin-top: -200%;
-    }
-    to {
-      margin-top: 0;
-    }
-  }
+@-webkit-keyframes slideIn {
+  from {
+    margin-top: -200%; }
+  to {
+    margin-top: 0; } }
 
-  @keyframes slideIn {
-    from {
-      margin-top: -200%;
-    }
-  } 
-
-}*/
+@keyframes slideIn {
+  from {
+    margin-top: -200%; } }
 
 /*# sourceMappingURL=style.css.map */

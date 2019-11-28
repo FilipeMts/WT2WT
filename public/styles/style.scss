@@ -125,6 +125,19 @@ h6 {
   }
 }
 
+.background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position:fixed;
+  top:0;
+  left:0;
+  height:90vh;
+  z-index: -99;
+  filter: blur(4px);
+}
+
+
 .btn-gradient {
   background: linear-gradient(45deg, $color1 0%, $color2 80%);
   color: white;
@@ -162,6 +175,7 @@ a {
   width: 80%;
   align-self: center;
   background-color: #ffffffe7;
+  z-index: 500;
 
   button {
     background-color: transparent;
@@ -198,13 +212,14 @@ a {
 
 .user-lists {
   border-left: 2px solid $color1;
+}
+
 .text-highlighted {
   font-weight: 900;
   padding: 3px 8px;
 }
-}
 
-/* .poster {
+ .banner-poster {
   animation-duration: 3s;
   animation-name: fadeIn;
 
@@ -247,4 +262,4 @@ a {
     }
   } 
 
-}*/
+}
