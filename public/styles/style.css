@@ -95,43 +95,60 @@ a {
   width: 80%;
   align-self: center; }
 
+.registerSignIn {
+  height: 90vh;
+  background: #f67280;
+  background: linear-gradient(0deg, #f67280 19%, #355c7d 100%); }
+
+.form-registerSigin {
+  background: #FFF; }
+
+.main-info {
+  background: whitesmoke; }
+
 /* .poster {
   animation-duration: 3s;
-  animation-name: fadeIn;             
+  animation-name: fadeIn;
 
   @-webkit-keyframes fadeIn {
-      0% {opacity: 0;};
-      100% {opacity: 1;};
-   } 
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
   @keyframes fadeIn {
-      0% {opacity: 0;};
-      100% {opacity: 1;};
-   } 
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
 
 .posterBanner {
   animation-duration: 3s;
   animation-name: slideIn;
-  z-index: 100; 
-      
-    @-webkit-keyframes slideIn {
-        from {
-            margin-top: -200%;                    
-        }
-        to {
-            margin-top: 0;                    
-        }                
-    }
+  z-index: 100;
 
-    @keyframes slideIn {
-        from {
-            margin-top: -200%;                    
-        }
-        to {
-            margin-top: 0;                    
-        }                
+  @-webkit-keyframes slideIn {
+    from {
+      margin-top: -200%;
     }
-} */
+    to {
+      margin-top: 0;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      margin-top: -200%;
+    }
+  } 
+
+}*/
 
 /*# sourceMappingURL=style.css.map */
