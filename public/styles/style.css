@@ -4,9 +4,10 @@
   box-sizing: border-box; }
 
 body {
-  padding: 0px;
-  margin-top: 56px;
-  font-family: "Karla", sans-serif; }
+  padding: 56px 0 0 0;
+  margin-top: 0;
+  font-family: "Karla", sans-serif;
+  min-height: 100vh; }
 
 h1,
 h2,
@@ -108,12 +109,12 @@ a {
     border: none; }
 
 .registerSignIn {
-  height: 90vh;
+  height: calc(100vh - 56px);
   background: #f67280;
   background: linear-gradient(0deg, #f67280 19%, #355c7d 100%); }
 
 .form-registerSigin {
-  background: #FFF; }
+  background: #fff; }
 
 .main-info {
   background: whitesmoke; }

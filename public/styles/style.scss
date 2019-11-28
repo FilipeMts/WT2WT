@@ -15,9 +15,10 @@ $lightgrey: #efefef;
 }
 
 body {
-  padding: 0px;
-  margin-top: 56px;
+  padding: 56px 0 0 0;
+  margin-top: 0;
   font-family: $font-sans;
+  min-height: 100vh;
 }
 
 h1,
@@ -158,13 +159,17 @@ a {
 }
 
 .registerSignIn {
-  height: 90vh;
-  background: rgb(246,114,128);
-  background: linear-gradient(0deg, rgba(246,114,128,1) 19%, rgba(53,92,125,1) 100%);
+  height: calc(100vh - 56px);
+  background: rgb(246, 114, 128);
+  background: linear-gradient(
+    0deg,
+    rgba(246, 114, 128, 1) 19%,
+    rgba(53, 92, 125, 1) 100%
+  );
 }
 
 .form-registerSigin {
-  background: #FFF;
+  background: #fff;
 }
 
 .main-info {
