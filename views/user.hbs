@@ -1,4 +1,58 @@
 {{!-- {{userObj}} --}}
+
+<div class="mt-5 d-flex flex-column justify-content-center align-items-center banner">
+  <div class="d-flex justify-content-center flex-column" >
+    <img class="mx-auto rounded-top shadow posterBanner w-50" src="{{userObj.profilePic}}"> 
+  </div>
+  <div class="px-5 rounded bg-primary w-100">
+    <h1 class="text-center">{{userObj.username}}</h1>
+    <p class="text-center font-italic">mood</p>
+    <div class ="col-md-12 col-sm-12 text-center">
+      {{#if follow}}
+        <form action="/user/{{userObj.username}}/unfollow" method="post">
+        <button>UNFOLLOW</button>
+        </form>
+      {{else}}
+        <form action="/user/{{userObj.username}}/follow" method="post">
+        <button>FOLLOW</button>
+        </form>
+      {{/if}}
+    </div>
+
+      <div class="mt-5">
+    <div class="row text-center">
+      <div class ="col-md-6 col-sm-6">
+        <p class="text-center">Following:{{userObj.followingCount}}</p>
+      </div>
+
+      <div class ="col-md-6 col-sm-6 text-center">
+        <p>Followers:{{userObj.followersCount}}</p>
+      </div>
+    </div>
+  </div>
+
+  <ul>
+    {{#each userObj.watchedList}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+  <ul>
+    {{#each userObj.towatchList}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+  <ul>
+    {{#each userObj.watchingList}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+  </div>
+
+
+</div>
+
+
+{{!-- 
 <div class ="container-fluid">
   <div class ="row">
     <div class ="col-md-6 col-sm-6 text-center">
@@ -51,3 +105,4 @@
 
 
 </div>
+ --}}

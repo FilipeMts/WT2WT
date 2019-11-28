@@ -107,6 +107,17 @@ a {
     background-color: transparent;
     border: none; }
 
+.registerSignIn {
+  height: 90vh;
+  background: #f67280;
+  background: linear-gradient(0deg, #f67280 19%, #355c7d 100%); }
+
+.form-registerSigin {
+  background: #FFF; }
+
+.main-info {
+  background: whitesmoke; }
+
 /* .poster {
   animation-duration: 3s;
   animation-name: fadeIn;
@@ -148,6 +159,8 @@ a {
     from {
       margin-top: -200%;
     }
-} */
+  } 
+
+}*/
 
 /*# sourceMappingURL=style.css.map */

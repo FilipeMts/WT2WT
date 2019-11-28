@@ -3,35 +3,40 @@
     <img class="mx-auto rounded-top shadow posterBanner" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ tmdbData.poster_path }}"> 
     {{> mtvCardButtons}}
   </div>
-  <div class="px-5 rounded bg-primary">
-    <h1 class="text-center">{{ title }}</h1>
+  <div class="px-5 rounded w-100 main-info">
+    <h1 class="font-weight-bold text-center pt-5">{{ title }}</h1>
     <p class="text-center font-italic">{{tmdbData.tagline}}</p>
+    <p class="text-center"><span><i class="far fa-thumbs-up"></i></span> {{ approveCount }}</p>
     <p class="text-center">
       {{#each tmdbData.genres}}      
         {{ this.name }}      
       {{/each}} 
     </p>
     <p class="text-center">{{tmdbData.release_date}}</p>
-    <p><span>Approved by: </span>{{ approveCount }} <span>friends</span></p>
-    <form action="/disapprove/{{ media_type }}/{{ tmdb }}" method="post">
+{{!--     <form action="/disapprove/{{ media_type }}/{{ tmdb }}" method="post">
       <button>Disapprove!</button>
-    </form>
+    </form> --}}
+    <p class="font-weight-bold">Overview</p>
     <p class="text-justify">{{ tmdbData.overview }}</p>
 
     {{#ifEquals media_type "movie"}}
       <div>
         <p class="text-justify">Status: {{ tmdbData.status }}</p>
       </div>   
-
     {{/ifEquals}}
 
     {{#ifEquals media_type "tv"}}
       <div>
+        <p class="font-weight-bold">Next episode</p>
+        <p>Season : {{tmdbData.next_episode_to_air.season_number}}</p>
+        <p>Episode number : {{tmdbData.next_episode_to_air.episode_number}}</p>
+        <p>Overview : {{tmdbData.next_episode_to_air.overview}}</p>
+
         <p><span>First air date:</span> {{ tmdbData.first_air_date}}</p>
         <p><span>Last air date:</span> {{ tmdbData.last_air_date}}</p>
         <p><span>Seasons:</span> {{ tmdbData.number_of_seasons}}</p>
         <p><span>Episodes:</span> {{ tmdbData.number_of_episodes}}</p>
-        <p class="text-justify">Status: {{ tmdbData.status }}</p>
+        <p class="text-justify">Status: {{ tmdbData.status }}</p>        
       </div>    
     {{/ifEquals}}
   </div>

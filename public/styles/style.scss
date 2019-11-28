@@ -157,6 +157,20 @@ a {
   }
 }
 
+.registerSignIn {
+  height: 90vh;
+  background: rgb(246,114,128);
+  background: linear-gradient(0deg, rgba(246,114,128,1) 19%, rgba(53,92,125,1) 100%);
+}
+
+.form-registerSigin {
+  background: #FFF;
+}
+
+.main-info {
+  background: whitesmoke;
+}
+
 /* .poster {
   animation-duration: 3s;
   animation-name: fadeIn;
@@ -198,4 +212,6 @@ a {
     from {
       margin-top: -200%;
     }
-} */
+  } 
+
+}*/
