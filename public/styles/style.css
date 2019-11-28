@@ -73,6 +73,8 @@ h6 {
     height: 25px; }
   #navbar #navbar-user img {
     width: 40px; }
+  #navbar #navbar-user a {
+    height: 40px; }
   #navbar #navbar-search input {
     background-color: #ffffff20;
     color: #ffffff; }
@@ -134,8 +136,11 @@ a {
   background: #f67280;
   background: linear-gradient(0deg, #f67280 19%, #355c7d 100%); }
 
-.form-registerSigin {
-  background: #fff; }
+.formRegisterSignIn {
+  background: #fff;
+  margin-top: -35px; }
+  .formRegisterSignIn h4 {
+    margin-top: -37px; }
 
 .main-info {
   background: whitesmoke; }

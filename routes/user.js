@@ -29,6 +29,16 @@ router.get('/user/:username', (req, res, next) => {
     });
 });
 
+router.get('/users/search', (req, res, next) => {
+  User.findByUsername(req.query)
+    .then((userObject) => {
+      res.redirect(`/user/${userObject.username}`);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 const routeGuard = require("../middleware/route-guard");
 
 router.post('/user/:username/follow', routeGuard, (req, res, next) => {

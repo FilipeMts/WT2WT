@@ -99,8 +99,13 @@ h6 {
     height: 25px;
   }
 
-  #navbar-user img {
-    width: 40px;
+  #navbar-user {
+    img {
+      width: 40px;
+    }
+    a {
+      height: 40px;
+    }
   }
 
   #navbar-search input {
@@ -193,8 +198,13 @@ a {
   );
 }
 
-.form-registerSigin {
+.formRegisterSignIn {
   background: #fff;
+  margin-top: -35px;
+
+  h4 {
+    margin-top: -37px;
+  }
 }
 
 .main-info {
