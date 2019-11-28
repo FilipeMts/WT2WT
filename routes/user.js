@@ -21,7 +21,7 @@ router.get('/user/:username', (req, res, next) => {
     }).then(follow => {
       res.render('user', {
         userObj,
-        follow        
+        follow
       });
     })
     .catch((error) => {
