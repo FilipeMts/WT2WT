@@ -134,14 +134,13 @@ h6 {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  position:fixed;
-  top:0;
-  left:0;
-  height:90vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 90vh;
   z-index: -99;
   filter: blur(4px);
 }
-
 
 .btn-gradient {
   background: linear-gradient(45deg, $color1 0%, $color2 80%);
@@ -188,6 +187,19 @@ a {
   }
 }
 
+.w2wGradient {
+  background: rgb(246, 114, 128);
+  background: linear-gradient(
+    0deg,
+    rgba(246, 114, 128, 1) 19%,
+    rgba(53, 92, 125, 1) 100%
+  );
+}
+
+#userInfo {
+  min-height: 50vh;
+}
+
 .registerSignIn {
   height: calc(100vh - 56px);
   background: rgb(246, 114, 128);
@@ -229,7 +241,7 @@ a {
   padding: 3px 8px;
 }
 
- .banner-poster {
+.banner-poster {
   animation-duration: 3s;
   animation-name: fadeIn;
 
@@ -270,6 +282,5 @@ a {
     from {
       margin-top: -200%;
     }
-  } 
-
+  }
 }

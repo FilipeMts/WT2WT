@@ -131,6 +131,13 @@ a {
     background-color: transparent;
     border: none; }
 
+.w2wGradient {
+  background: #f67280;
+  background: linear-gradient(0deg, #f67280 19%, #355c7d 100%); }
+
+#userInfo {
+  min-height: 50vh; }
+
 .registerSignIn {
   height: calc(100vh - 56px);
   background: #f67280;

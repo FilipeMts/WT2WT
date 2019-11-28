@@ -1,32 +1,32 @@
 {{!-- {{userObj}} --}}
-
-<div class="container">
-  <div class="row mt-5">
-    <div class="col-6 text-center">
-      <img class="mx-auto shadow userProfileImg" src="https://lh3.googleusercontent.com/-XbkzMFWVLE0/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3re6kkquCia1vbFpbzQieoGplRr2rw.CMID/s192-c/photo.jpg"> 
+<div id="userInfo" class="w2wGradient d-flex justify-content-center align-items-center">
+  <div class="bg-white col-12 col-sm-10 m-5 rounded-twice shadow d-flex align-items-center justify-content-start">
+    <div class="py-4 px-5">
+      <img class="shadow rounded-circle" src="https://lh3.googleusercontent.com/-XbkzMFWVLE0/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3re6kkquCia1vbFpbzQieoGplRr2rw.CMID/s192-c/photo.jpg"> 
+      <h3 class="text-center text-1-5 color-4 mt-3"><span>@</span>{{userObj.username}}</h3>
     </div>
-    <div class="col-6">
-      <h1 class="text-center"><span>@</span>{{userObj.username}}</h1>
-      <p class="text-center font-italic">Say hello to my little friend!</p> 
-      <p>{{userPage}}</p>
-      {{!-- <p class="text-center">Following:{{userObj.followingCount}}</p> --}}
-      <p class="text-center">{{userObj.followersCount}} followers</p>  
+    <div class="px-3">
+      <h1 class="color-4 mb-0">Filipe Catarino</h1>
+      <p class="text-muted"><span class="mr-2">{{userObj.followersCount}} followers</span>|<span class="ml-2"></span>{{userObj.followingCount}} following</span></p>
+      <p class="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id maxime esse suscipit voluptatibus voluptate accusamus, facere distinctio, beatae debitis impedit vitae culpa, fugiat consequuntur magni placeat excepturi sed perspiciatis quod?</p> 
       {{#ifEquals userObj.username user.username}}
         <form action="/sign-out" method="POST">
           <button>Sign Out</button>
         </form>
       {{/ifEquals}}      
       {{#if follow}}
-        <form action="/user/{{userObj.username}}/unfollow" method="post" class="text-center">
+        <form action="/user/{{userObj.username}}/unfollow" method="post" class="text-left">
         <button type="button" class="btn-gradient p-2 rounded-twice">Unfollow</button>
         </form>
       {{else}}
-        <form action="/user/{{userObj.username}}/follow" method="post" class="text-center">
-        <button type="button" class="btn-gradient p-2 rounded-twice">Follow</button>
+        <form action="/user/{{userObj.username}}/follow" method="post" class="text-left">
+        <button type="button" class="btn-gradient py-1 px-3 rounded-twice">Follow</button>
         </form>
-      {{/if}}  
+      {{/if}} 
+     </div> 
     </div>
-  </div>  
+</div>
+<div class="bg-white">  
   <div class="mt-5 bg-color-pink">
     <div class="row text-center">
       <div class ="col-md-4 col-sm-4">
