@@ -21,8 +21,8 @@ router.get("/confirm/:token", (req, res, next) => {
       status: "Active"
     })
     .then(user => {
-      //console.log(user)
-      req.session.user = user._id;
+      console.log(req.session.passport)
+      req.session.passport.user = user;
       res.redirect("/success");
     })
     .catch(err => {
@@ -66,18 +66,6 @@ router.get('/auth/google',
 
 router.get('/auth/google/redirect',
   passport.authenticate('google', {
-    successRedirect: '/',
-    failureRedirect: './auth/sign-up'
-  })
-);
-
-
-//FACEBOOK SIGNUP/IN
-router.get('/login/facebook',
-  passport.authenticate('facebook'));
-
-router.get('/auth/facebook/redirect',
-  passport.authenticate('facebook', {
     successRedirect: '/',
     failureRedirect: './auth/sign-up'
   })

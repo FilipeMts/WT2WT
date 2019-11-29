@@ -215,6 +215,15 @@ a {
 #userInfo {
   min-height: 50vh; }
 
+.success {
+  color: white;
+  font-size: 1em;
+  min-height: calc(100vh - 56px);
+  background: #f67280;
+  background: linear-gradient(0deg, #f67280 19%, #355c7d 100%); }
+  .success a {
+    text-decoration: none; }
+
 .registerSignIn {
   min-height: calc(100vh - 56px);
   background: #f67280;
