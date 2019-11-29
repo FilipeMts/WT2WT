@@ -28,6 +28,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.owensvalleyhistory.com%2Fat_the_movies22%2Fthemovies01.png&f=1&nofb=1'
   },
+  name: {
+    type: String,
+    maxlength: 140,
+    default: 'Wat2Watch User'
+  },
   passwordHash: {
     type: String,
     //required: true
@@ -42,7 +47,8 @@ const userSchema = new mongoose.Schema({
     unique: true
   },
   description: {
-    type: String
+    type: String,
+    maxlength: 140,
   },
   followingCount: {
     type: Number,

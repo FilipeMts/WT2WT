@@ -4,16 +4,16 @@
     <h4 class="text-left rounded-twice py-2 px-3 bg-1 bg-white mb-4 color-4 shadow text-uppercase">Login<span class="color-1 text-1-5 ml-0 lh-0">.</span></h4>
     <div class="form-group">
       <input id='input-email' type="email" name="email" class="form-control" placeholder="Enter email" required autofocus/>    
-      <small class="text-center text-muted">Email</small> {{!-- LABEL --}}
+      <label class="text-center text-muted">Email</label> {{!-- LABEL --}}
     </div>
     <div class="form-group">
       <input id="input-password" type="password" name="password" class="form-control" placeholder="Enter your password" required/>
-      <small class="text-center text-muted">Password</small> {{!-- LABEL --}}
+      <label class="text-center text-muted">Password</label> {{!-- LABEL --}}
     </div>
     <button type="submit" class="btn text-center w-100 rounded-twice bg-4 text-white text-uppercase p-2">Submit</button>
     <p class="my-0 text-muted text-center"><small>or</small></p>
     <div class="text-center w-100">
-      <a href="/auth/google" class="border round p-2 d-flex align-items-center justify-content-between rounded-twice color-1"><i class="lni-google"></i>Sign in with Google</a>
+      <a href="/auth/google" class="border round p-2 d-flex align-items-center justify-content-between rounded-twice color-1" style="text-decoration: none;"><i class="lni-google"></i>Sign in with Google</a>
     </div>
   </form>
 </div>

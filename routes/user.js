@@ -69,4 +69,9 @@ router.post('/user/:username/unfollow', routeGuard, (req, res, next) => {
     });
 });
 
+router.get('/user/:username/edit', routeGuard, (req, res, next) => {
+  res.render('./editProfile')
+});
+
+
 module.exports = router;

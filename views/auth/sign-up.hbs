@@ -1,21 +1,23 @@
-<div class="d-flex align-items-center registerSignIn"> 
-  <form action="/sign-up" method="POST" class="col-3 py-3 mx-auto border-2 shadow rounded-twice form-registerSigin">
-    <h6 class="text-center">Register</h6>
+<div class="d-flex align-items-center flex-column registerSignIn"> 
+  <img src="/images/undraw_my_password_d6kg.svg" alt="" class="col-10 col-sm-8 col-md-3 px-4 pt-4">
+  <form action='./sign-up' method='POST' class="col-3 py-3 mx-auto border-2 shadow rounded-twice formRegisterSignIn">
+    <h4 class="text-left rounded-twice py-2 px-3 bg-1 bg-white mb-4 color-4 shadow text-uppercase">Register<span class="color-1 text-1-5 ml-0 lh-0">.</span></h4>
+
     <div class="form-group">
       <input id="input-username" type="text" class="form-control" name="username" placeholder="Your username" required autofocus/> 
-      <small>Username</small>
+      <label class="text-muted">Username</label>
     </div>
     <div class="form-group">
       <input id='input-email' type="email" class="form-control" name="email" placeholder="Enter email" required/>    
-      <small class="text-muted">Email</small>
+      <label class="text-muted">Email</label>
     </div>
     <div class="form-group">
       <input id="input-password" type="password" class="form-control" name="password" placeholder="Enter your password" required/>
-      <small class="text-muted">Password</small> {{!-- LABEL --}}
+      <label class="text-muted">Password</label>
     </div>
-    <button class="btn btn-primary w-100">Sign Up</button>
-    <div class="text-center mt-3 w-100"> {{!-- LABEL --}}
-      <a href="/auth/google" class="border round p-2"><i class="fab fa-google" style="color: red"></i>  Sign Up with Google</a>      
+    <button class="btn text-center w-100 rounded-twice bg-4 text-white text-uppercase p-2">Submit</button>
+    <div class="text-center mt-3 w-100">
+      <a href="/auth/google" class="border round p-2 d-flex align-items-center justify-content-between rounded-twice color-1" style="text-decoration: none;"><i class="lni-google"></i>Sign in with Google</a>    
     </div>
   </form>
 </div>

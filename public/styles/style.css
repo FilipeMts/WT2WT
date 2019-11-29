@@ -140,7 +140,7 @@ a {
   min-height: 50vh; }
 
 .registerSignIn {
-  height: calc(100vh - 56px);
+  min-height: calc(100vh - 56px);
   background: #f67280;
   background: linear-gradient(0deg, #f67280 19%, #355c7d 100%); }
 
@@ -149,6 +149,9 @@ a {
   margin-top: -35px; }
   .formRegisterSignIn h4 {
     margin-top: -37px; }
+
+label {
+  font-size: .8em; }
 
 .main-info {
   background: whitesmoke; }
@@ -166,6 +169,14 @@ a {
 .text-highlighted {
   font-weight: 900;
   padding: 3px 8px; }
+
+.tabs a {
+  color: #355c7d; }
+  .tabs a:active {
+    border: none; }
+
+.card {
+  border: none; }
 
 .banner-poster {
   animation-duration: 3s;

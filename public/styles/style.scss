@@ -202,7 +202,7 @@ a {
 }
 
 .registerSignIn {
-  height: calc(100vh - 56px);
+  min-height: calc(100vh - 56px);
   background: rgb(246, 114, 128);
   background: linear-gradient(
     0deg,
@@ -218,6 +218,10 @@ a {
   h4 {
     margin-top: -37px;
   }
+}
+
+label {
+  font-size: .8em;
 }
 
 .main-info {
@@ -242,6 +246,21 @@ a {
   padding: 3px 8px;
 }
 
+//User tabs
+.tabs {
+  a {
+    color: $color4;
+    
+    &:active {
+      border: none;
+    }
+  }
+}
+
+.card {
+  border: none;
+}
+//----------
 .banner-poster {
   animation-duration: 3s;
   animation-name: fadeIn;
