@@ -1,8 +1,10 @@
-<div class="d-flex flex-column justify-content-center align-items-center banner" {{!-- style="background-image: url('https://image.tmdb.org/t/p/w1400_and_h450_face/{{ tmdbData.backdrop_path }}');" --}}>
+<div class="d-flex flex-column justify-content-center align-items-center" {{!-- style="background-image: url('https://image.tmdb.org/t/p/w1400_and_h450_face/{{ tmdbData.backdrop_path }}');" --}}>
   <div id="backdrop" style="background-image: url('https://image.tmdb.org/t/p/w1400_and_h450_face/{{ tmdbData.backdrop_path }}');"></div>
-  <div class="d-flex justify-content-center flex-column p-4">
-    <img class="mx-auto rounded-top shadow posterBanner" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ tmdbData.poster_path }}"> 
-    {{> mtvCardButtons}}
+  <div class=" poster-container">
+    <div class="d-flex justify-content-center flex-column p-4">
+      <img class="mx-auto rounded-twice shadow {{!-- posterBanner --}} poster-single animated fadeIn slow" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ tmdbData.poster_path }}"> 
+      {{> mtvCardButtons}}
+    </div>
   </div>
   <div class="px-5 rounded w-100 main-info">
     <h1 class="font-weight-bold text-center pt-3">{{ title }}</h1>
@@ -19,9 +21,6 @@
       {{/each}} 
     </p>
     <p class="text-center">{{tmdbData.release_date}}</p>
-{{!--     <form action="/disapprove/{{ media_type }}/{{ tmdb }}" method="post">
-      <button>Disapprove!</button>
-    </form> --}}
     <p class="font-weight-bold">Overview</p>
     <p class="text-justify">{{ tmdbData.overview }}</p>
 
@@ -45,7 +44,7 @@
         <p><span>Last air date:</span> {{ tmdbData.last_air_date}}</p>
         <p><span>Seasons:</span> {{ tmdbData.number_of_seasons}}</p>
         <p><span>Episodes:</span> {{ tmdbData.number_of_episodes}}</p>
-        <p class="text-center" style="color: green">{{ tmdbData.status }}</p> 
+        <p>Status:  {{ tmdbData.status }}</p> 
       </div>    
     {{/ifEquals}}
   </div>

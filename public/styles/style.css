@@ -93,6 +93,9 @@ h6 {
       /* Microsoft Edge */
       color: white; }
 
+.mtvCard-container:hover {
+  opacity: .8; }
+
 #backdrop {
   background-repeat: no-repeat;
   background-size: cover;
@@ -101,9 +104,9 @@ h6 {
   top: 0;
   left: 0;
   width: 100%;
-  height: 90vh;
+  height: 80vh;
   z-index: -99;
-  filter: blur(4px); }
+  filter: grayscale(0.85) opacity(0.85); }
 
 .btn-gradient {
   background: linear-gradient(45deg, #f67280 0%, #c06c84 80%);
@@ -190,8 +193,11 @@ label {
 .card {
   border: none; }
 
-.banner-poster {
-  animation-duration: 3s;
+.poster-container {
+  height: 70vh; }
+
+.search-poster {
+  animation-duration: 2s;
   animation-name: fadeIn; }
 
 @-webkit-keyframes fadeIn {
@@ -206,19 +212,25 @@ label {
   100% {
     opacity: 1; } }
 
+.poster-single {
+  height: 60vh; }
+
 .posterBanner {
+  height: 60vh;
   animation-duration: 3s;
   animation-name: slideIn;
   z-index: 100; }
 
 @-webkit-keyframes slideIn {
   from {
-    margin-top: -200%; }
+    margin-top: -25%; }
   to {
     margin-top: 0; } }
 
 @keyframes slideIn {
   from {
-    margin-top: -200%; } }
+    margin-top: -25%; }
+  to {
+    margin-top: 0; } }
 
 /*# sourceMappingURL=style.css.map */
