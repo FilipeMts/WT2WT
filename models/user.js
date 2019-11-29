@@ -145,6 +145,13 @@ userSchema.static('oneLessFollow', function (id) {
 userSchema.static('findByUsername', function (username) {
   const User = this;
   return User.findOne(username)
+    .populate({
+      path: 'watchedList watchingList towatchList',
+      populate: {
+        path: 'mtvs',
+        model: 'Mtv'
+      }
+    })
     .then(user => {
       if (!user) {
         return Promise.reject("There's no user with that username");

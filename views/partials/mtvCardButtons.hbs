@@ -1,11 +1,11 @@
 <div class="btn-group d-flex justify-content-center rounded-twice shadow mx-auto mtvButtons">
-  <form class="flex-fill" action="{{../user.watchedList }}/add/{{ media_type }}/{{ id }}" method="POST">
+  <form class="flex-fill" action="{{ user.watchedList }}/add/{{ media_type }}/{{ id }}" method="POST">
       <button class="w-100 p-2 btn d-flex align-items-center justify-content-center" title="watched"><i class="lni-check-mark-circle text-1-5 color-4"></i></button>
   </form>
-  <form class="flex-fill" action="{{../user.watchingList }}/add/{{ media_type }}/{{ id }}" method="POST">
+  <form class="flex-fill" action="{{ user.watchingList }}/add/{{ media_type }}/{{ id }}" method="POST">
       <button class="w-100 p-2 btn d-flex align-items-center justify-content-center" title="watching"><i class="lni-arrow-right-circle text-1-5 color-4"></i></button>
   </form>
-  <form class="flex-fill" action="{{../user.towatchList }}/add/{{ media_type }}/{{ id }}" method="POST">
+  <form class="flex-fill" action="{{ user.towatchList }}/add/{{ media_type }}/{{ id }}" method="POST">
       <button class="w-100 p-2 btn d-flex align-items-center justify-content-center" title="to be watched"><i class="lni-alarm-clock text-1-5 color-4"></i></button>
   </form>
   <form class="flex-fill" action="/approve/{{ media_type }}/{{ id }}" method="POST">

@@ -69,12 +69,29 @@ h6 {
   color: $color4;
 }
 
+.border-bottom-light-grey {
+  border-bottom: 2px solid $lightgrey;
+}
+
 .text-arial {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.link-color-1:hover {
+  color: $color1;
+  text-decoration: none;
+}
+
+.text-0-75 {
+  font-size: 0.75em;
+}
+
 .text-1 {
   font-size: 1em;
+}
+
+.text-1-25 {
+  font-size: 1.25em;
 }
 
 .text-1-5 {
@@ -117,6 +134,11 @@ h6 {
     background-color: #ffffff20;
     color: #ffffff;
 
+    &:focus {
+      outline: none;
+      background-color: #ffffff3b;
+    }
+
     &::placeholder {
       /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: white;
@@ -131,6 +153,37 @@ h6 {
     &::-ms-input-placeholder {
       /* Microsoft Edge */
       color: white;
+    }
+  }
+}
+
+#userSearch {
+  input {
+    background-color: transparent;
+    color: $color4;
+
+    &:focus {
+      outline: none;
+      background-color: #f6727f2a;
+    }
+
+    &::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: $color4;
+      opacity: 1; /* Firefox */
+      font-weight: 100;
+      font-family: $font-sans;
+      font-size: 0.8em;
+    }
+
+    &:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: $color4;
+    }
+
+    &::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: $color4;
     }
   }
 }
@@ -152,7 +205,7 @@ h6 {
   background: linear-gradient(45deg, $color1 0%, $color2 80%);
   color: white;
   font-weight: 900;
-  border: none;
+  border: 2px solid white;
 }
 
 .poster {
@@ -242,7 +295,7 @@ label {
   background: $color4;
 }
 
-.profile-pic{
+.profile-pic {
   max-width: 200px;
 }
 

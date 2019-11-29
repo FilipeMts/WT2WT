@@ -21,6 +21,7 @@ const followSchema = new mongoose.Schema({
 
 
 followSchema.static('findFollowAndPush', function (id, idToFollow) {
+    const Follow = this;
     return Follow.findOne({
         user_id: id
     }).then((followObject) => {
@@ -38,6 +39,7 @@ followSchema.static('findFollowAndPush', function (id, idToFollow) {
 });
 
 followSchema.static('findFollowAndDelete', function (id, idToUnfollow) {
+    const Follow = this;
     return Follow.findOne({
         user_id: id
     }).then((followObject) => {
@@ -57,6 +59,7 @@ followSchema.static('findFollowAndDelete', function (id, idToUnfollow) {
 });
 
 followSchema.static('doYouFollow', function (follower, followed) {
+    const Follow = this;
     return Follow.findOne({
         user_id: follower
     }).then((followObject) => {
