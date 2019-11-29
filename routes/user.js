@@ -73,5 +73,41 @@ router.get('/user/:username/edit', routeGuard, (req, res, next) => {
   res.render('./editProfile')
 });
 
+const multer = require('multer');
+const cloudinary = require('cloudinary');
+const storageCloudinary = require('multer-storage-cloudinary');
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_API_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+const storage = storageCloudinary({
+  cloudinary,
+  folder: 'WAT',
+  allowedFormats: ['jpg', 'png']
+});
+
+const uploader = multer({
+  storage
+});
+
+router.post('/user/:username/edit', routeGuard, uploader.single('profilePic'), (req, res, next) => {
+  console.log(req.body);   
+  //const {name, description, email, password, profilePic} = req.body
+  User.findByIdAndUpdate(req.user._id, {
+    name: req.body.name,
+    description: req.body.description,
+    email: req.body.email,
+    passwordHash: req.body.password,
+    profilePic: req.file.url   
+  })    
+  .then((user) => { 
+    console.log(user)   
+    res.redirect(`/user/${user.username}`)
+  })
+  .catch(error => console.log(error))
+});
 
 module.exports = router;

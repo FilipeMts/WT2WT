@@ -1,6 +1,6 @@
 <nav id="navbar" class="navbar d-flex align-items-center fixed-top">
   <div id="navbar-links" class="d-flex align-items-center mr-4">
-    <a href='/'>
+    <a href='/'>      
       <img src="/images/logo.svg" alt="">
     </a>
   </div>
@@ -15,7 +15,7 @@
       <a href='/{{user.username}}/list/{{user.watchingList}}' class="px-2 d-flex align-items-center"><i class="lni-arrow-right-circle text-1-5 text-white"></i></a>
       <a href='/{{user.username}}/list/{{user.towatchList}}' class="px-2 mr-3 d-flex align-items-center"><i class="lni-alarm-clock text-1-5 text-white"></i></a>
       <a href="/user/{{user.username}}" class="">
-        <img src="https://lh3.googleusercontent.com/-XbkzMFWVLE0/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3re6kkquCia1vbFpbzQieoGplRr2rw.CMID/s192-c/photo.jpg" alt="" class="rounded-circle">
+        <img src={{user.profilePic}} alt="" class="rounded-circle">
       </a>
     {{else}}
       <a href='/sign-in' class="ml-4 d-flex align-items-center">Login</a>

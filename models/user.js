@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
   },
   profilePic: {
     type: String,
-    default: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.owensvalleyhistory.com%2Fat_the_movies22%2Fthemovies01.png&f=1&nofb=1'
+    default: '/images/logo_round.png'
   },
   name: {
     type: String,
@@ -49,6 +49,7 @@ const userSchema = new mongoose.Schema({
   description: {
     type: String,
     maxlength: 140,
+    default: 'Let us know what side of the force you\'re in!'
   },
   followingCount: {
     type: Number,

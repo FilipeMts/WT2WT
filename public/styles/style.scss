@@ -232,9 +232,8 @@ label {
   background: $color4;
 }
 
-.userProfileImg {
-  border-radius: 50%;
-  border: 2px solid $color1;
+.profile-pic{
+  max-width: 200px;
 }
 
 .user-lists {

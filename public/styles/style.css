@@ -159,9 +159,8 @@ label {
 .userInfo {
   background: #355c7d; }
 
-.userProfileImg {
-  border-radius: 50%;
-  border: 2px solid #f67280; }
+.profile-pic {
+  max-width: 200px; }
 
 .user-lists {
   border-left: 2px solid #f67280; }
