@@ -60,6 +60,17 @@ h6 {
   color: #f67280;
   text-decoration: none; }
 
+.link-color-2:hover {
+  color: #c06c84;
+  text-decoration: none; }
+
+.link-color-3:hover {
+  color: #6c5b7b;
+  text-decoration: none; }
+
+.text-0-6 {
+  font-size: 0.6em; }
+
 .text-0-75 {
   font-size: 0.75em; }
 
@@ -110,7 +121,8 @@ h6 {
       color: white; }
 
 .mtvCard-container:hover {
-  opacity: .8; }
+  opacity: 0.8; }
+
 #userSearch input {
   background-color: transparent;
   color: #355c7d; }
@@ -147,8 +159,7 @@ h6 {
 .btn-gradient {
   background: linear-gradient(45deg, #f67280 0%, #c06c84 80%);
   color: white;
-  font-weight: 900;
-  border: 2px solid white; }
+  font-weight: 900; }
 
 .poster li div a p.title {
   bottom: 0;
@@ -225,6 +236,9 @@ label {
       border: none;
       border-bottom: 3px solid #f67280;
       color: #f67280; }
+
+#myTabContentJust .tab-pane {
+  min-height: 60vh; }
 
 .card {
   border: none; }
