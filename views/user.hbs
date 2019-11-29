@@ -32,7 +32,7 @@
 <div class="bg-white">  
 
 <div class="tabs">
-  <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
+  <ul class="nav nav-tabs nav-justified md-tabs indigo py-1" id="myTabJust" role="tablist">
     {{#ifEquals userObj.username user.username}}
     <li class="nav-item">
       <a class="nav-link" id="suggestions" data-toggle="tab" href="#go-suggestions" role="tab" aria-controls="home-just"
@@ -56,9 +56,24 @@
         aria-selected="false">Currently watching</a>
     </li>
   </ul>
-  <div class="tab-content card pt-5" id="myTabContentJust">
-    <div class="tab-pane fade show active" id="#go-suggestions" role="tabpanel" aria-labelledby="home-tab-just">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper malesuada proin libero nunc. Quam pellentesque nec nam aliquam sem et tortor consequat id. Lectus proin nibh nisl condimentum id venenatis a condimentum. Fringilla ut morbi tincidunt augue interdum velit. </p>
+  <div class="tab-content card container" id="myTabContentJust">
+    <div class="tab-pane fade show active py-5" id="#go-suggestions" role="tabpanel" aria-labelledby="home-tab-just">
+      
+      <div class="d-flex flex-align-center shadow rounded-twice py-4">
+        <div class="d-flex align-items-center justify-content-center col-1 col-sm-2">
+          <a href="/mtv/movie/671" class="position-relative d-flex w-100 justify-content-center">
+            <img class="rounded-twice w-75" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/dCtFvscYcXQKTNvyyaQr2g2UacJ.jpg" alt="" title="Harry Potter and the Philosopher's Stone">
+            <div class="bg-5 position-absolute rounded-circle d-flex align-item-center justify-content-center checkmark">
+              <i class="lni-check-mark-circle text-2 text-white"></i>
+            </div>
+          </a>
+        </div>
+          <div class="color-4">
+            <h4>Harry Potter</h4>
+
+          </div>
+      </div>
+
     </div>
     <div class="tab-pane fade" id="approved" role="tabpanel" aria-labelledby="profile-tab-just">
       <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1
