@@ -6,6 +6,19 @@ const List = require('./models/list');
 const Follow = require('./models/follow');
 const bcryptjs = require('bcryptjs');
 
+const fs = require('fs');
+const handlebars = require('handlebars');
+
+const characters = require('characters');
+const movieQuote = require("popular-movie-quotes");
+
+const renderTemplate = (path, data) => {
+  const source = fs.readFileSync(path, 'utf8');
+  const template = handlebars.compile(source);
+  const result = template(data);
+  return result;
+}
+
 const generateId = length => {
   const characters =
     "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -24,14 +37,18 @@ let transporter = nodemailer.createTransport({
   }
 });
 
+let htmlEmail;
+
 const sendMail = user => {
   transporter.sendMail({
     from: `wat2watch <MAIL>`,
     to: `${user.email}`,
     subject: "Email verification",
-    html: `
-      <p>Welcome to Wat2Watch</p>
-      <p><a href="http://localhost:3000/confirm/${user.confirmationCode}">Please verify your email address by clicking this link in order to get full access to Wat2Watch</a></p>`
+    text: "Please verify your email address by clicking this link in order to get full access to Wat2Watch",
+    html: htmlEmail
+    // html: `
+    //   <p>Welcome to Wat2Watch</p>
+    //   <p><a href="http://localhost:3000/confirm/${user.confirmationCode}">Please verify your email address by clicking this link in order to get full access to Wat2Watch</a></p>`
 
     // html: `
     // <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.owensvalleyhistory.com%2Fat_the_movies22%2Fthemovies01.png&f=1&nofb=1" width="200px"/>
@@ -63,11 +80,15 @@ passport.use(
   }, (req, username, password, callback) => {
     const confirmToken = generateId(30);
     let userObject = {};
+    const randomCharacter = characters.random();
+    const randomQuote = movieQuote.getRandomQuote();
     bcryptjs
       .hash(password, 10)
       .then(hash => {
         return User.create({
           username,
+          description: randomQuote,
+          name: `${randomCharacter.first} ${randomCharacter.last}`,
           email: req.body.email,
           passwordHash: hash,
           confirmationCode: confirmToken
@@ -75,6 +96,10 @@ passport.use(
       })
       .then(user => {
         console.log(user.email)
+        htmlEmail = renderTemplate(__dirname + "/views/verify-email.hbs", {
+          user
+        });
+        console.log(htmlEmail);
         sendMail(user)
         userObject = user;
         return List.create({

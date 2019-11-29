@@ -10,22 +10,23 @@
       <h1 class="color-4 mb-0">{{userObj.name}}</h1>
       <p class="text-muted"><span class="mr-2">{{userObj.followersCount}} followers</span>|<span class="ml-2"></span>{{userObj.followingCount}} following</span></p>
       <p class="">{{userObj.description}}</p> 
-      
-      {{#ifEquals userObj.username user.username}}
+      {{#ifEquals userObj.username user.username }}
+      <div class="d-flex align-items-center position-absolute" style="right: 10px; bottom:10px;">
+        <a href="/user/{{userObj.username}}/edit" class="bg-light text-muted btn-sm py-1 px-3 rounded-twice border mr-2 d-flex align-items-center justify-content-between"><i class="lni-cog mr-2"></i>Edit</a>
         <form action="/sign-out" method="POST">
-          <button class="btn-gradient p-2 rounded-twice">Logout</button>
+          <button class="bg-light text-muted btn-sm py-1 px-3 rounded-twice border">Logout</button>
         </form>
-        <a href="/user/{{userObj.username}}/edit">Edit profile</a>
-        {{else}}
-      {{#if follow}}
-        <form action="/user/{{userObj.username}}/unfollow" method="post" class="text-left">
-          <button type="button" class="btn-gradient p-2 rounded-twice">Unfollow</button>
-        </form>
+      </div>
       {{else}}
-        <form action="/user/{{userObj.username}}/follow" method="post" class="text-left">
-        <button type="button" class="btn-gradient py-1 px-3 rounded-twice">Follow</button>
-        </form>
-      {{/if}} 
+        {{#if follow}}
+          <form action="/user/{{userObj.username}}/unfollow" method="post" class="text-left">
+            <button class="bg-light text-muted btn-sm py-1 px-3 rounded-twice border">Unfollow</button>
+          </form>
+        {{else}}
+          <form action="/user/{{userObj.username}}/follow" method="post" class="text-left">
+            <button class="btn-gradient py-1 px-3 btn-sm rounded-twice">Follow</button>
+          </form>
+        {{/if}} 
       {{/ifEquals}}      
      </div> 
     </div>
@@ -36,29 +37,30 @@
   <ul class="nav nav-tabs nav-justified md-tabs indigo py-1" id="myTabJust" role="tablist">
     {{#ifEquals userObj.username user.username}}
     <li class="nav-item">
-      <a class="nav-link" id="suggestions" data-toggle="tab" href="#go-suggestions" role="tab" aria-controls="home-just"
+      <a class="nav-link" id="suggestions" data-toggle="tab" href="#cSuggestions" role="tab" aria-controls="home-just"
         aria-selected="true">Suggestions</a>
     </li>
     {{/ifEquals}} 
     <li class="nav-item">
-      <a class="nav-link active" id="approved" data-toggle="tab" href="#go-approved" role="tab" aria-controls="home-just"
+      <a class="nav-link" id="approved" data-toggle="tab" href="#cApproved" role="tab" aria-controls="home-just"
         aria-selected="true">Approved</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="watched" data-toggle="tab" href="#go-watched" role="tab" aria-controls="profile-just"
-        aria-selected="false">Alredy watched</a>
+      <a class="nav-link" id="watched" data-toggle="tab" href="#cWatched" role="tab" aria-controls="profile-just"
+        aria-selected="false">Watched</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="want-to-watch" data-toggle="tab" href="#go-want" role="tab" aria-controls="contact-just"
-        aria-selected="false">Want to watch</a>
+      <a class="nav-link" id="currently" data-toggle="tab" href="#cWatching" role="tab" aria-controls="contact-just"
+        aria-selected="false">Watching</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="currently" data-toggle="tab" href="go-currently" role="tab" aria-controls="contact-just"
-        aria-selected="false">Currently watching</a>
+      <a class="nav-link" id="want-to-watch" data-toggle="tab" href="#cToWatch" role="tab" aria-controls="contact-just"
+        aria-selected="false">to Watch</a>
     </li>
+
   </ul>
   <div class="tab-content card container" id="myTabContentJust">
-    <div class="tab-pane fade show active py-5" id="#go-suggestions" role="tabpanel" aria-labelledby="home-tab-just">
+    <div class="tab-pane fade show py-5" id="cSuggestions" role="tabpanel" aria-labelledby="home-tab-just">
       
       <div class="d-flex flex-align-center shadow rounded-twice py-4">
         <div class="d-flex align-items-center justify-content-center col-1 col-sm-2">
@@ -76,7 +78,7 @@
       </div>
 
     </div>
-    <div class="tab-pane fade" id="approved" role="tabpanel" aria-labelledby="profile-tab-just">
+    <div class="tab-pane fade" id="cApproved" role="tabpanel" aria-labelledby="profile-tab-just">
       <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1
         labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft
         beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad
@@ -85,13 +87,15 @@
         anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party
         scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
     </div>
-    <div class="tab-pane fade" id="watched" role="tabpanel" aria-labelledby="contact-tab-just">
-      <p>Tellus orci ac auctor augue mauris augue neque. In hendrerit gravida rutrum quisque non tellus orci ac. Elit eget gravida cum sociis natoque penatibus et. Amet risus nullam eget felis eget nunc lobortis mattis aliquam. Metus aliquam eleifend mi in nulla posuere. Vel turpis nunc eget lorem. Aliquam etiam erat velit scelerisque in dictum non.</p>
+    <div class="tab-pane fade" id="cWatched" role="tabpanel" aria-labelledby="contact-tab-just">
+      {{#each userObj.watchedList.mtvs}}
+        {{title}}
+      {{/each}}
     </div>
-    <div class="tab-pane fade" id="want" role="tabpanel" aria-labelledby="contact-tab-just">
+    <div class="tab-pane fade" id="cToWatch" role="tabpanel" aria-labelledby="contact-tab-just">
       <p>Lacus laoreet non curabitur gravida arcu ac tortor dignissim convallis. Sit amet porttitor eget dolor morbi. Sed arcu non odio euismod lacinia. Magna fermentum iaculis eu non diam. Vitae congue mauris rhoncus aenean. Neque convallis a cras semper auctor neque vitae tempus. Nam aliquam sem et tortor consequat id porta nibh.</p>
     </div>
-    <div class="tab-pane fade" id="currently" role="tabpanel" aria-labelledby="contact-tab-just">
+    <div class="tab-pane fade" id="cWatching" role="tabpanel" aria-labelledby="contact-tab-just">
       <p>Quam viverra orci sagittis eu volutpat odio facilisis. Vulputate ut pharetra sit amet aliquam id diam. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Ut etiam sit amet nisl purus in mollis. Morbi non arcu risus quis. Viverra mauris in aliquam sem fringilla ut. Ultricies mi eget mauris pharetra. Ut sem nulla pharetra diam.</p>
     </div>
   </div>

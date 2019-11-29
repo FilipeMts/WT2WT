@@ -13,6 +13,8 @@ router.get('/user/:username', (req, res, next) => {
   User.findByUsername(req.params)
     .then((userObject) => {
       userObj = userObject;
+      console.log(userObject);
+
       if (req.user) {
         return Follow.doYouFollow(req.user._id, userObject._id);
       } else {
@@ -33,6 +35,18 @@ router.get('/users/search', (req, res, next) => {
   User.findByUsername(req.query)
     .then((userObject) => {
       res.redirect(`/user/${userObject.username}`);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+router.get('/users/', (req, res, next) => {
+  User.find()
+    .then((usersObject) => {
+      res.render('user/all', {
+        usersObject
+      });
     })
     .catch((error) => {
       console.log(error);
@@ -94,20 +108,20 @@ const uploader = multer({
 });
 
 router.post('/user/:username/edit', routeGuard, uploader.single('profilePic'), (req, res, next) => {
-  console.log(req.body);   
+  console.log(req.body);
   //const {name, description, email, password, profilePic} = req.body
   User.findByIdAndUpdate(req.user._id, {
-    name: req.body.name,
-    description: req.body.description,
-    email: req.body.email,
-    passwordHash: req.body.password,
-    profilePic: req.file.url   
-  })    
-  .then((user) => { 
-    console.log(user)   
-    res.redirect(`/user/${user.username}`)
-  })
-  .catch(error => console.log(error))
+      name: req.body.name,
+      description: req.body.description,
+      email: req.body.email,
+      passwordHash: req.body.password,
+      profilePic: req.file.url
+    })
+    .then((user) => {
+      console.log(user)
+      res.redirect(`/user/${user.username}`)
+    })
+    .catch(error => console.log(error))
 });
 
 module.exports = router;

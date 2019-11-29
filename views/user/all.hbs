@@ -1,0 +1,30 @@
+{{!-- {{ usersObject }} --}}
+<div class="text-white bg-1">
+  <div class="container-fluid p-3 border-bottom">
+    <h1 class="mb-0 text-1-5 text-uppercase">Users<span class="color-4 text-1-5 ml-1 lh-0">.</span></h1>
+  </div>
+</div>
+<div class="bg-light border-bottom-light-grey">
+  <form action="/users/search" method="get" class="w-100" id="userSearch">
+    <input type="text" name="username" id="username" placeholder="Search for username..." class="w-100 py-3 text-1-25 px-3 border-0">
+  </form>
+</div>
+<div class="container py-5">
+  <div class="row">
+  {{#each usersObject}}
+  <div class="col-6 col-sm-4 col-md-3">
+    <div class="d-flex justify-content-center align-items-center flex-column shadow rounded-twice p-1">
+      <a href="/user/{{username}}" class="d-flex align-items-center justify-content-center">
+        <img src="{{profilePic}}" alt="" class="shadow rounded-circle w-50 m-4">
+      </a>
+      <div class="text-center w-100 bg-light py-3 px-1 rounded-twice mx-1">
+        <a href="/user/{{username}}" class="d-flex align-items-center justify-content-center color-4 link-color-1">
+          <h5 class="">@{{username}}</h5>
+        </a>
+        <p class="text-muted text-0-75 mb-0"><span class="mr-2">{{followersCount}} followers</span>|<span class="ml-2"></span>{{followingCount}} following</span></p>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+  </div>
+</div>

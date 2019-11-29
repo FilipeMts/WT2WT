@@ -50,11 +50,24 @@ h6 {
 .color-4 {
   color: #355c7d; }
 
+.border-bottom-light-grey {
+  border-bottom: 2px solid #efefef; }
+
 .text-arial {
   font-family: Arial, Helvetica, sans-serif; }
 
+.link-color-1:hover {
+  color: #f67280;
+  text-decoration: none; }
+
+.text-0-75 {
+  font-size: 0.75em; }
+
 .text-1 {
   font-size: 1em; }
+
+.text-1-25 {
+  font-size: 1.25em; }
 
 .text-1-5 {
   font-size: 1.5em; }
@@ -81,6 +94,9 @@ h6 {
   #navbar #navbar-search input {
     background-color: #ffffff20;
     color: #ffffff; }
+    #navbar #navbar-search input:focus {
+      outline: none;
+      background-color: #ffffff3b; }
     #navbar #navbar-search input::placeholder {
       /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: white;
@@ -95,6 +111,26 @@ h6 {
 
 .mtvCard-container:hover {
   opacity: .8; }
+#userSearch input {
+  background-color: transparent;
+  color: #355c7d; }
+  #userSearch input:focus {
+    outline: none;
+    background-color: #f6727f2a; }
+  #userSearch input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #355c7d;
+    opacity: 1;
+    /* Firefox */
+    font-weight: 100;
+    font-family: "Karla", sans-serif;
+    font-size: 0.8em; }
+  #userSearch input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #355c7d; }
+  #userSearch input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #355c7d; }
 
 #backdrop {
   background-repeat: no-repeat;
@@ -112,7 +148,7 @@ h6 {
   background: linear-gradient(45deg, #f67280 0%, #c06c84 80%);
   color: white;
   font-weight: 900;
-  border: none; }
+  border: 2px solid white; }
 
 .poster li div a p.title {
   bottom: 0;
