@@ -1,18 +1,18 @@
 <div class="d-flex align-items-center flex-column registerSignIn"> 
   <img src="/images/undraw_wishlist_jk8a.svg" alt="" class="col-10 col-sm-8 col-md-3 px-4 pt-4">
-  <form action='./edit' method='POST' class="col-3 py-3 mx-auto border-2 shadow rounded-twice formRegisterSignIn">
+  <form action='./edit' method='POST' enctype="multipart/form-data" class="col-3 py-3 mx-auto border-2 shadow rounded-twice formRegisterSignIn">
     <h4 class="text-left rounded-twice py-2 px-3 bg-1 bg-white mb-4 color-4 shadow text-uppercase">Edit your profile<span class="color-1 text-1-5 ml-0 lh-0">.</span></h4>
 
     <div class="form-group">
-      <input id="input-name" type="text" class="form-control" name="name" placeholder="Your name" maxlength="25"/> 
+      <input id="input-name" type="text" class="form-control" name="name" value={{user.name}} maxlength="25" required/> 
       <label class="text-muted">Name</label>
     </div>
-    <div class="form-group">
-      <input id="input-name" type="text" class="form-control" name="photo" placeholder="A photo of you or your cat"/> 
-      <label class="text-muted">Profile photo</label>
+    <div>
+      <input type="file" name="profilePic">
+      <label class="text-muted">Upload foto</label>     
     </div>
-    <div class="form-group">
-      <input id="input-description" type="text" class="form-control" name="description" placeholder="Tell us about yourself" maxlength="140"/> 
+      <div class="form-group">
+      <input id="input-description" type="text" class="form-control" name="description" maxlength="140" value={{user.description}} required/> 
       <label class="text-muted">Description</label>
     </div>
 
@@ -21,11 +21,11 @@
       <label class="text-muted">Username</label>
     </div> --}}
     <div class="form-group">
-      <input id='input-email' type="email" class="form-control" name="email" placeholder="New email address"/>    
+      <input id='input-email' type="email" class="form-control" name="email" value={{user.email}} required/>    
       <label class="text-muted">Email</label>
     </div>
     <div class="form-group">
-      <input id="input-password" type="password" class="form-control" name="password" placeholder="New password"/>
+      <input id="input-password" type="password" class="form-control" name="password" value={{user.passwordHash}} required/>
       <label class="text-muted">Password</label>
     </div>
     <button class="btn text-center w-100 rounded-twice bg-4 text-white text-uppercase p-2">Submit</button>
