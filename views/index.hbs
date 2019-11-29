@@ -11,14 +11,22 @@
   <div class="col-5">
     <h2 class="color-4">No more fights.<br>We'll choose for you.</h2>
     <p class="color-4">The more movies and series you add to your <span class="text-highlighted rounded-twice bg-wheat">lists</span> and<br> the more people you <span class="text-highlighted rounded-twice bg-wheat">follow</span> the better suggestions will be.</p>
-    <a href="/sign-up" class="btn mt-2 btn-gradient px-5 py-2 text-uppercase">Register</a>
+    {{#ifEquals userObj.username user.username}}
+      <a href="/sign-up" class="btn mt-2 btn-gradient px-5 py-2 text-uppercase">Register</a>
+      {{else}}      
+      <a href="/user/{{user.username}}" class="btn mt-2 btn-gradient px-5 py-2 text-uppercase">Register</a>
+    {{/ifEquals}} 
   </div>
 </section>
 <section class="d-flex align-items-center py-5 bg-wheat  justify-content-around">
   <div class="col-5">
     <h2 class="color-4">What you approve really matters.</h2>
     <p class="color-4">The people who follow you are counting on your impecable taste for their next movie night. Their <span class="text-highlighted rounded-twice bg-white color-1">suggestions</span> are tied with your <span class="text-highlighted rounded-twice bg-white color-1">approvals</span><br><em>With great power comes great responsibility!</em></p>
-    <a href="/sign-up" class="btn mt-2 btn-gradient px-5 py-2 text-uppercase">Influence away</a>
+    {{#ifEquals userObj.username user.username}}
+      <a href="/sign-up" class="btn mt-2 btn-gradient px-5 py-2 text-uppercase">Influence away</a>
+      {{else}} 
+      <a href="/user/{{user.username}}" class="btn mt-2 btn-gradient px-5 py-2 text-uppercase">Influence away</a>
+    {{/ifEquals}} 
   </div>
     <div class="col-5">
     <img src="/images/undraw_like_dislike_1dfj.svg" alt="" srcset="" class="w-100 p-5">
