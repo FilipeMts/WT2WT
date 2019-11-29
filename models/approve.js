@@ -19,6 +19,7 @@ const approveSchema = new mongoose.Schema({
 });
 
 approveSchema.static('findOrCreate', function (mtv, user) {
+    const Approve = this;
     return Approve.findOne({
             $and: [{
                 mtv_id: mtv

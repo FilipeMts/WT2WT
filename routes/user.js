@@ -6,24 +6,44 @@ const {
 const router = new Router();
 const User = require("./../models/user");
 const Follow = require("./../models/follow");
+const Approve = require("./../models/approve");
+const Suggestion = require("./../models/suggestion");
 
 
 router.get('/user/:username', (req, res, next) => {
   let userObj;
+  let followObj;
+  let approvesObj;
+  let suggestionsObj;
   User.findByUsername(req.params)
     .then((userObject) => {
       userObj = userObject;
-      console.log(userObject);
-
       if (req.user) {
         return Follow.doYouFollow(req.user._id, userObject._id);
       } else {
         return false;
       }
     }).then(follow => {
+      followObj = follow;
+      return Approve.find({
+        user_id: userObj._id
+      }, {
+        mtv_id: 1
+      }).populate('mtv_id');
+    }).then(approves => {
+      approvesObj = approves;
+      return Suggestion.find({
+        toUser: userObj._id
+      }, {
+        mtv_id: 1
+      }).populate('mtv_id');
+    }).then(suggestions => {
+      suggestionsObj = suggestions;
       res.render('user', {
         userObj,
-        follow
+        followObj,
+        approvesObj,
+        suggestionsObj
       });
     })
     .catch((error) => {
