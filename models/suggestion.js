@@ -58,6 +58,7 @@ suggestionSchema.static('findOrCreate', function (mtv, user, approver) {
                 // If there's one, resolve promise with the value
                 if (!suggestion.fromUsers.includes(approver)) {
                     suggestion.fromUsers.push(approver);
+                    suggestion.count++;
                     suggestion.save();
                 }
                 return suggestion;

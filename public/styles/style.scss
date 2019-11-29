@@ -8,6 +8,7 @@ $color4: #355c7d;
 $color5: #52de97;
 
 $lightgrey: #efefef;
+$mediumgrey: #c4bfbf;
 
 * {
   margin: 0;
@@ -68,6 +69,17 @@ h6 {
 .color-4 {
   color: $color4;
 }
+.color-5 {
+  color: $color5;
+}
+
+.color-light-grey {
+  color: $lightgrey;
+}
+
+.color-medium-grey {
+  color: $mediumgrey;
+}
 
 .border-bottom-light-grey {
   border-bottom: 2px solid $lightgrey;
@@ -124,6 +136,14 @@ h6 {
   line-height: 0;
 }
 
+.lh-0-5 {
+  line-height: 0.5;
+}
+
+.lh-1 {
+  line-height: 1;
+}
+
 #navbar {
   background-color: $color4;
 
@@ -174,6 +194,11 @@ h6 {
   &:hover {
     opacity: 0.8;
   }
+}
+
+.mini-profiles {
+  width: 30px;
+  margin-left: -15px;
 }
 
 #userSearch {

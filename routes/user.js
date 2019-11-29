@@ -15,6 +15,7 @@ router.get('/user/:username', (req, res, next) => {
   let followObj;
   let approvesObj;
   let suggestionsObj;
+  let followersObj;
   User.findByUsername(req.params)
     .then((userObject) => {
       userObj = userObject;
@@ -34,15 +35,25 @@ router.get('/user/:username', (req, res, next) => {
       approvesObj = approves;
       return Suggestion.find({
         toUser: userObj._id
-      }, {
-        mtv_id: 1
-      }).populate('mtv_id');
+      }).populate('mtv_id').populate({
+        path: 'fromUsers',
+        model: 'User'
+      });
     }).then(suggestions => {
       suggestionsObj = suggestions;
+      return Follow.find({
+        user_id: userObj._id
+      }).populate({
+        path: 'users',
+        model: 'User'
+      });
+    }).then(followers => {
+      followersObj = followers;
       res.render('user', {
         userObj,
         followObj,
         approvesObj,
+        followersObj,
         suggestionsObj
       });
     })

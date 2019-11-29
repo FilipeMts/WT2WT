@@ -38,13 +38,18 @@ app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + "/views/partials");
 
-hbs.registerHelper('ifEquals', function(a, b, opts) {
+hbs.registerHelper('ifEquals', function (a, b, opts) {
   if (a == b) {
-      return opts.fn(this);
+    return opts.fn(this);
   } else {
-      return opts.inverse(this);
+    return opts.inverse(this);
   }
 });
+
+hbs.registerHelper('ratio', function (a, b) {
+  return (a / b * 100).toFixed(0);
+});
+
 
 app.use(logger('dev'));
 app.use(express.urlencoded({

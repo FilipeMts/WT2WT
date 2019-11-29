@@ -50,6 +50,15 @@ h6 {
 .color-4 {
   color: #355c7d; }
 
+.color-5 {
+  color: #52de97; }
+
+.color-light-grey {
+  color: #efefef; }
+
+.color-medium-grey {
+  color: #c4bfbf; }
+
 .border-bottom-light-grey {
   border-bottom: 2px solid #efefef; }
 
@@ -92,6 +101,12 @@ h6 {
 .lh-0 {
   line-height: 0; }
 
+.lh-0-5 {
+  line-height: 0.5; }
+
+.lh-1 {
+  line-height: 1; }
+
 #navbar {
   background-color: #355c7d; }
   #navbar a {
@@ -122,6 +137,10 @@ h6 {
 
 .mtvCard-container:hover {
   opacity: 0.8; }
+
+.mini-profiles {
+  width: 30px;
+  margin-left: -15px; }
 
 #userSearch input {
   background-color: transparent;
