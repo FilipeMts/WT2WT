@@ -269,6 +269,22 @@ a {
   min-height: 50vh;
 }
 
+.success {
+  color: white;
+  font-size: 1em;  
+  min-height: calc(100vh - 56px);
+  background: rgb(246, 114, 128);
+  background: linear-gradient(
+    0deg,
+    rgba(246, 114, 128, 1) 19%,
+    rgba(53, 92, 125, 1) 100%
+  );
+
+    a {
+      text-decoration: none;
+    }
+}
+
 .registerSignIn {
   min-height: calc(100vh - 56px);
   background: rgb(246, 114, 128);

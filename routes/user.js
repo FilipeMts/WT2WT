@@ -115,7 +115,7 @@ router.post('/user/:username/edit', routeGuard, uploader.single('profilePic'), (
       description: req.body.description,
       email: req.body.email,
       passwordHash: req.body.password,
-      profilePic: req.file.url
+      profilePic: req.file ? req.file.url : '/images/logo_round.png'
     })
     .then((user) => {
       console.log(user)
