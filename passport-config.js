@@ -166,7 +166,7 @@ passport.use(
   new GoogleStrategy({
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://wt2wtc.herokuapp.com//auth/google/redirect"
+      callbackURL: "https://wt2wtc.herokuapp.com/auth/google/redirect"
     },
     function (accessToken, refreshToken, profile, callback) {
       //console.log(profile._json.sub)
@@ -200,7 +200,7 @@ passport.use(
         });
     }
   ));
-
+/* 
 //FACEBOOK CONFIG
 const FacebookStrategy = require('passport-facebook').Strategy;
 
@@ -212,4 +212,4 @@ passport.use(new FacebookStrategy({
   function (accessToken, refreshToken, profile, cb) {
     console.log(profile)
   }
-));
+)); */
