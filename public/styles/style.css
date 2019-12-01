@@ -107,6 +107,9 @@ h6 {
 .lh-1 {
   line-height: 1; }
 
+.button .lni:hover {
+  color: #f67280; }
+
 #navbar {
   background-color: #355c7d; }
   #navbar a {

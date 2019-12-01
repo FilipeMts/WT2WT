@@ -47,6 +47,8 @@ hbs.registerHelper('ifEquals', function (a, b, opts) {
 });
 
 hbs.registerHelper('ratio', function (a, b) {
+  a = Number(a);
+  b = Number(b);
   return (a / b * 100).toFixed(0);
 });
 

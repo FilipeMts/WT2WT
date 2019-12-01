@@ -18,7 +18,7 @@ listRouter.post('/:list_id/add/:media_type/:id', routeGuard, (req, res, next) =>
       return List.findById(req.params.list_id);
     }).then(list => {
       list.findMtvOrPush(mtvObjectId);
-      res.redirect(`/${req.user.username}/list/${list._id}`);
+      res.redirect(`/user/${req.user.username}`);
     }).catch((error) => {
       console.log(error);
     });

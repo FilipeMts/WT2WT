@@ -1,2 +1,89 @@
-{{ mtvObject }} 
-{{> showSingle}}
+<div class="d-flex flex-column justify-content-center align-items-center" {{!-- style="background-image: url('https://image.tmdb.org/t/p/w1400_and_h450_face/{{ tmdbData.backdrop_path }}');" --}}>
+  <div id="backdrop" style="background-image: url('https://image.tmdb.org/t/p/w1400_and_h450_face/{{ tmdbData.backdrop_path }}');"></div>
+  <div class=" poster-container">
+    <div class="d-flex justify-content-center flex-column p-4">
+      <img class="mx-auto rounded-twice shadow {{!-- posterBanner --}} poster-single animated fadeIn slow" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ tmdbData.poster_path }}"> 
+      {{#if user}}
+    <div class="btn-group d-flex justify-content-center rounded-twice shadow mx-auto mtvButtons">
+    <form class="flex-fill" action="{{user.watchedList }}/add/{{ media_type }}/{{ tmdbData.id }}" method="POST">
+        <button class="w-100 p-2 btn d-flex align-items-center justify-content-center" title="watched"><i class="lni-check-mark-circle text-1-5 color-4"></i></button>
+    </form>
+    <form class="flex-fill" action="{{user.watchingList }}/add/{{ media_type }}/{{ tmdbData.id }}" method="POST">
+        <button class="w-100 p-2 btn d-flex align-items-center justify-content-center" title="watching"><i class="lni-arrow-right-circle text-1-5 color-4"></i></button>
+    </form>
+    <form class="flex-fill" action="{{user.towatchList }}/add/{{ media_type }}/{{ tmdbData.id }}" method="POST">
+        <button class="w-100 p-2 btn d-flex align-items-center justify-content-center" title="to be watched"><i class="lni-alarm-clock text-1-5 color-4"></i></button>
+    </form>
+    <form class="flex-fill" action="/approve/{{ media_type }}/{{ tmdbData.id }}" method="POST">
+        <button class="w-100 p-2 btn d-flex align-items-center justify-content-center" title="approve"><i class="lni-thumbs-up text-1-5 color-4"></i></button>
+        <p class="position-absolute bg-1 text-white rounded-circle text-center shadow border"  style="width:25px; top:-10px; right:-10px;">{{ approveCount }}</p>
+
+    </form>
+    </div>
+    {{else}}  
+        <div class="btn-group d-flex justify-content-center rounded-twice shadow mx-auto mtvButtons">
+            <form class="flex-fill" action="/sign-up" method="GET">
+                <button class="w-100 p-2 btn d-flex align-items-center justify-content-center" title="watched"><i class="lni-check-mark-circle text-1-5 color-4"></i></button>
+            </form>
+            <form class="flex-fill" action="/sign-up" method="GET">
+                <button class="w-100 p-2 btn d-flex align-items-center justify-content-center" title="watching"><i class="lni-arrow-right-circle text-1-5 color-4"></i></button>
+            </form>
+            <form class="flex-fill" action="/sign-up" method="GET">
+                <button class="w-100 p-2 btn d-flex align-items-center justify-content-center" title="to be watched"><i class="lni-alarm-clock text-1-5 color-4"></i></button>
+            </form>
+            <form class="flex-fill" action="/sign-up" method="GET">
+                <button class="w-100 p-2 btn d-flex align-items-center justify-content-center" title="approve"><i class="lni-thumbs-up text-1-5 color-4"></i></button>
+              <p class="position-absolute bg-1 text-white rounded-circle text-center shadow border" style="width:25px; top:-10px; right:-10px;">{{ approveCount }}</p>
+            </form>
+        </div>
+{{/if}}
+    </div>
+  </div>
+  <div class="px-5 w-100 main-info bg-white pb-5 mb-5">
+    <h1 class="font-weight-bold text-center py-3 color-4 bg-light">{{ title }}</h1>
+    {{#ifEquals media_type "tv"}}
+      {{#ifEquals tmdbData.status "Returning Series"}}
+        <p class="text-center" style="color: green">{{ tmdbData.status }}</p> 
+      {{/ifEquals}}
+    {{/ifEquals}}
+    <p class="text-center font-italic border-bottom py-3">"{{tmdbData.tagline}}"</p>
+       {{#ifEquals media_type "movie"}}
+      <div class="d-flex justify-content-center mb-2">
+        <span class="btn-gradient p-2 rounded-twice">Status: {{ tmdbData.status }}</span>
+      </div>   
+    {{/ifEquals}}
+    {{!-- <p class="text-center"><span><i class="lni-thumbs-up"></i></span> {{ approveCount }}</p> --}}
+    <p class="text-center">
+      {{#each tmdbData.genres}}      
+        {{ this.name }}      
+      {{/each}} 
+    </p>
+    <p class="text-center">{{tmdbData.release_date}}</p>
+    <div class="container">
+    <p class="font-weight-bold text-center">Overview</p>
+    <p class="text-justify">{{ tmdbData.overview }}</p>
+
+
+    </div>
+
+ 
+
+    {{#ifEquals media_type "tv"}}
+      <div>
+          {{!-- <p class="text-justify">Status: {{ tmdbData.status }}</p>  --}}        
+        {{#ifEquals tmdbData.status "Returning Series"}}          
+          <p class="font-weight-bold">Next episode</p>
+          <p>Season : {{tmdbData.next_episode_to_air.season_number}}</p>
+          <p>Episode number : {{tmdbData.next_episode_to_air.episode_number}}</p>
+          <p>Overview : {{tmdbData.next_episode_to_air.overview}}</p>
+        {{/ifEquals}}
+
+        <p><span>First air date:</span> {{ tmdbData.first_air_date}}</p>
+        <p><span>Last air date:</span> {{ tmdbData.last_air_date}}</p>
+        <p><span>Seasons:</span> {{ tmdbData.number_of_seasons}}</p>
+        <p><span>Episodes:</span> {{ tmdbData.number_of_episodes}}</p>
+        <p>Status:  {{ tmdbData.status }}</p> 
+      </div>    
+    {{/ifEquals}}
+  </div>
+</div>
